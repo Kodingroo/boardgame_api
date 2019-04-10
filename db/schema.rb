@@ -10,25 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_10_062538) do
+ActiveRecord::Schema.define(version: 2019_04_10_074855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "bgames_data", force: :cascade do |t|
-    t.string "game_name"
-    t.integer "bgg_rank"
-    t.integer "play_time"
-    t.integer "player_count"
-    t.integer "suitable_ages"
-    t.string "complexity"
-    t.string "category"
-    t.string "mechanic"
-    t.string "designer"
-    t.string "publisher"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "game_archives", force: :cascade do |t|
     t.string "game_name"
@@ -63,6 +48,8 @@ ActiveRecord::Schema.define(version: 2019_04_10_062538) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "authentication_token", limit: 30
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

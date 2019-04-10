@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home]
+  acts_as_token_authentication_handler_for User, except: [ :index, :show ]
+  skip_before_action :authenticate_user!, only: [:index]
 
-  def home
+  def index
+    @game_archives = GameArchive.all
   end
 end
