@@ -1,0 +1,144 @@
+// COLORS
+
+$primary: #333740;
+$secondary: #ededed;
+
+$tertiary: #479bdf;
+$nav: #ededed;
+$button: #083156;
+$fontcolor: #011C27;
+
+$white: white;
+$black: black;
+
+// FONTS
+$default-font-size: 14px;
+$heading-font-size: 48px;
+$title-font: 'Noto Sans TC', sans-serif;
+$body-font: 'Montserrat', sans-serif;
+$box-shadow: 0 6px 8px rgba(59, 59, 59, 0.2);
+$small-box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
+
+body {
+  font-family: $body-font;
+  font-size: $default-font-size;
+  background: $secondary;
+  position: relative;
+}
+
+p {
+  font-family: $body-font;
+  margin: 15px;
+  line-height: 20px;
+  font-size: $default-font-size;
+  font-weight: lighter;
+  color: $primary;
+}
+
+h1 {
+  font-family: $title-font;
+  font-weight: bold;
+  color: $button;
+}
+
+h2 {
+  // margin-top: 5px;
+  font-family: $title-font;
+  font-size: 24px;
+  font-weight: bold;
+  color: $button;
+}
+
+ul {
+  padding: 0;
+}
+
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:focus {
+  text-decoration: none;
+}
+
+.main-body {
+  background: $white;
+}
+
+.white {
+  background-color: $white;
+  & p {
+    color: $primary;
+  }
+}
+
+.white-font {
+  color: white;
+}
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  background: #fff;
+  color: $primary;
+  box-shadow: $box-shadow;
+}
+
+.is-marginless {
+  margin: 0 !important;
+}
+.is-marginless-top {
+  margin-top: 0px;
+}
+.is-paddingless {
+  padding: 0 !important;
+}
+.padding-top-bottom {
+  padding: 40px 0;
+}
+
+.padding-small {
+  padding: 10px 15px !important;
+}
+
+.margin-top-bottom {
+  margin-top: 20px;
+}
+
+.primary-wrapper {
+  background: $primary;
+  padding: 40px 0;
+  flex: 1;
+}
+
+.sticky {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 90px;
+  z-index: 100;
+}
+
+@media (max-width: 1000px) {
+  .sticky-top {
+    position: -webkit-sticky; /* Safari */
+    position: relative;
+    top: 0;
+    z-index: 100;
+  }
+  .profile__left {
+    height: auto;
+  }
+}

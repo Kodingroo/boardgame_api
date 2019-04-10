@@ -1,12 +1,75 @@
-.navbar-lewagon {
+@import 'base';
+
+.navigation {
+  height: 100px;
+  margin: -10px;
+  background-color: $nav;
+  opacity: 0.9;
+  padding: 0 10px;
+  display: flex;
   justify-content: space-between;
-  background: white;
+  align-items: center;
+  & a {
+    color: $button;
+    font-weight: bold;
+    margin-right: 12px;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    &:hover {
+      color: $button;
+    }
+  }
+
+  .home-link {
+    font-family: $title-font;
+    font-size: 36px;
+    margin-left: 10px;
+    padding-left: 20px;
+    opacity: 0.5;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__right {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    & a {
+      padding: 15px 5px;
+    }
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+@media (max-width: 760px) {
+  .navigation {
+    height: 100px;
+    &__right {
+      visibility: hidden;
+      cursor: pointer;
+    }
+  }
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.top-icon {
+  background: $nav;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: $primary;
+  padding-right: 20px;
+}
+.top-icon-links {
+  display: flex;
+  align-items: center;
+}
+.top-icon-links a {
+  color: $button;
+  opacity: 0.5;
+  text-decoration: none;
+  font-size: 36px;
+  padding: 0px 10px;
+}
+.top-icon-links a:hover {
+  opacity: 0.9;
+  color: $button;
 }

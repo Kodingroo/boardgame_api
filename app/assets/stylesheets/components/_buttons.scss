@@ -1,0 +1,54 @@
+@import 'base';
+
+.button {
+  background: $primary;
+  border: none;
+  border-radius: 5px;
+  color: $white;
+  height: 50px;
+  font-size: $default-font-size;
+  min-width: 120px;
+  transition: opacity 0.2s ease-in-out;
+  margin: 20px;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+.is-inverted {
+  background: #fff;
+  border: 1px solid $primary;
+  color: $primary;
+}
+
+.is-inverted:hover {
+  background: $primary;
+  color: $white;
+}
+
+.is-small {
+  height: 40px;
+}
+
+.is-fullwidth {
+  display: block;
+  border-radius: 0;
+  width: 100%;
+  font-size: 24px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.call-to-action {
+  display: flex;
+  justify-content: center;
+}
+
+#user-button {
+  color: $primary;
+}
+
+#user-button:hover {
+  color: $secondary;
+}
