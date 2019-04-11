@@ -53,9 +53,11 @@ However, this is limited to users with admin access, along with the Update and D
 #### Remove a game `DELETE './api/v1/game_archives/:id'`
 
 If you wish to do this using Postman, please be sure to include:
+```
 Content-Type: `application/json`
 X-User-Email: `youremail@email.com`
 X-User-Token: `your token from when your create your user in the terminal`
+```
 
 #### Cloning the API locally
 
@@ -64,6 +66,7 @@ https://github.com/Kodingroo/boardgame_api
 
 Once cloned, run the following in the terminal:
 
+```
 Install:
 $ bundle install
 $ yarn install --check-files
@@ -75,6 +78,7 @@ $ rake db:seed
 
 Run:
 $ rails server -p 4000 (or any available/valid port)
+```
 
 Enjoy the API of the current world top 100 board games and let me know if this API was useful.
 
