@@ -7,4 +7,8 @@
   <app></app>
 </div> -->
 
-<div id="my-target-element" data-var-name="var-value"></div>
+<div id="my-target-element" data-var-name="
+<% @game_archives.each do |game| %>
+<%= game.game_name %>
+<% end %>
+"></div>

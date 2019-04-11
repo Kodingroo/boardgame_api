@@ -4,5 +4,6 @@ class PagesController < ApplicationController
 
   def index
     @game_archives = GameArchive.all
+    @hello = "Hello"
   end
 end
