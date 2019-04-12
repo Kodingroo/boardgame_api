@@ -7,7 +7,7 @@ Vue.component('game-index-component', {
       get_games: ''
     }
   },
-  template: '<ul><li v-for="g in get_games">{{g.game_rank}} : {{ g.game_name }} - Mechanic : {{ g.mechanic }}</li></ul>',
+  template: '<ul><li v-for="g in get_games"> {{g.game_rank}} : {{ g.game_name }}, <img :src="g.thumb_url"></li></ul>',
   created: function () {
     this.fetchData();
   },
