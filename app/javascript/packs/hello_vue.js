@@ -1,13 +1,11 @@
-
 import Vue from 'vue/dist/vue.esm'
 import App from '../app.vue'
-
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#my-target-element',
     data: {
-      status: '',
+      get_games: '',
       board_game_ref: ''
     },
     created: function () {
@@ -16,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     methods: {
       fetchData: function () {
         var vm = this
-        this.status = 'Loading...';
+        this.get_games = 'Loading...';
         axios.get('https://boardgameapi.herokuapp.com/api/v1/game_archives',
         {
           headers: {
@@ -30,10 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         })
         .then(function (response){
-          vm.status = response.data[0];
+          vm.get_games = response.data;
         })
         .catch(function (error){
-          vm.status = 'An error occured.' + error;
+          vm.get_games = 'An error occured.' + error;
         });
       }
     }

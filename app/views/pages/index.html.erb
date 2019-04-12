@@ -5,5 +5,11 @@
 <hr>
 <hr>
 <div id="my-target-element">
-  {{ status }}
+  <div>
+    <ul>
+      <li v-for="get_game in get_games">
+          {{ get_game.game_name }}
+      </li>
+    </ul>
+  </div>
 </div>
