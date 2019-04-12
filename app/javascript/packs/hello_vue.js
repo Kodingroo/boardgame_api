@@ -17,7 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
       fetchData: function () {
         var vm = this
         this.status = 'Loading...';
-        axios.get('https://boardgameapi.herokuapp.com/api/v1/game_archives')
+        axios.get('https://boardgameapi.herokuapp.com/api/v1/game_archives',
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'X-User-Email': 'kodingroo@gmail.com',
+            'X-User-Token': 'szLq3dtuSRzTrJ2s45ob',
+          },
+          auth: {
+            email: 'kodingroo@gmai.com',
+            password: 'password'
+          }
+        })
         .then(function (response){
           vm.status = response.data[0];
         })
@@ -28,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 })
-
 
 // import Vue from 'vue/dist/vue.esm'
 // import App from '../app.vue'
