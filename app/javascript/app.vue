@@ -1,14 +1,24 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
+    <p>{{ board_game_ref }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  data: function () {
-    return {
-      message: "Hello Vue!"
+  data: {
+    board_game_ref: '',
+  },
+  created: function () {
+    this.fetchData();
+  },
+  methods: {
+    fetchData: function () {
+      var vm = this
+      this.$http.get('https://boardgameapi.herokuapp.com/api/v1/game_archives'),
+      function (data) {
+        vm.board_game_ref = data.game_name;
+      }
     }
   }
 }

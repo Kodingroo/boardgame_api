@@ -1,16 +1,48 @@
+
 import Vue from 'vue/dist/vue.esm'
 import App from '../app.vue'
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#my-target-element',
-    template: '<div>Just an example with {{varName}}</div>',
-    data: {varName: null},
-    beforeMount: function () {
-        this.varName = this.$el.attributes['data-var-name'].value;
+    data: {
+      status: '',
+      board_game_ref: ''
     },
-});
+    created: function () {
+      this.fetchData();
+    },
+    methods: {
+      fetchData: function () {
+        var vm = this
+        this.status = 'Loading...';
+        axios.get('https://boardgameapi.herokuapp.com/api/v1/game_archives')
+        .then(function (response){
+          vm.status = response.data[0];
+        })
+        .catch(function (error){
+          vm.status = 'An error occured.' + error;
+        });
+      }
+    }
+  });
 })
+
+
+// import Vue from 'vue/dist/vue.esm'
+// import App from '../app.vue'
+//
+// document.addEventListener('DOMContentLoaded', () => {
+//   const app = new Vue({
+//     el: '#my-target-element',
+//     template: '<div>Just an example with {{varName}}</div>',
+//     data: {varName: null},
+//     beforeMount: function () {
+//         this.varName = this.$el.attributes['data-var-name'].value;
+//     },
+// });
+// })
 
 /* eslint no-console: 0 */
 // Run this example by adding <%= javascript_pack_tag 'hello_vue' %> (and
