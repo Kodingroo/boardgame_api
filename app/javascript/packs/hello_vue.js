@@ -1,12 +1,36 @@
 import Vue from 'vue/dist/vue.esm'
 import App from '../app.vue'
 
+Vue.component('game-index-component', {
+  data: function() {
+    return {
+      get_games: ''
+    }
+  },
+  template: '<ul><li v-for="g in get_games">{{g.game_rank}} : {{ g.game_name }} - Mechanic : {{ g.mechanic }}</li></ul>',
+  created: function () {
+    this.fetchData();
+  },
+  methods: {
+    fetchData: function () {
+      var vm = this
+      this.get_games = 'Loading...';
+      axios.get('https://boardgameapi.herokuapp.com/api/v1/game_archives')
+      .then(function (response){
+        vm.get_games = response.data;
+      })
+      .catch(function (error){
+        vm.get_games = 'An error occured.' + error;
+      });
+    }
+  }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#my-target-element',
     data: {
-      get_games: '',
-      board_game_ref: ''
+      get_games: ''
     },
     created: function () {
       this.fetchData();
@@ -15,18 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       fetchData: function () {
         var vm = this
         this.get_games = 'Loading...';
-        axios.get('https://boardgameapi.herokuapp.com/api/v1/game_archives',
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'X-User-Email': 'kodingroo@gmail.com',
-            'X-User-Token': 'szLq3dtuSRzTrJ2s45ob',
-          },
-          auth: {
-            email: 'kodingroo@gmai.com',
-            password: 'password'
-          }
-        })
+        axios.get('https://boardgameapi.herokuapp.com/api/v1/game_archives')
         .then(function (response){
           vm.get_games = response.data;
         })

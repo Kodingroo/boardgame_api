@@ -6,10 +6,6 @@
 <hr>
 <div id="my-target-element">
   <div>
-    <ul>
-      <li v-for="g in get_games">
-          {{g.game_rank}} : {{ g.game_name }} - Mechanic : {{ g.mechanic }}
-      </li>
-    </ul>
+    <game-index-component></game-index-component>
   </div>
 </div>
