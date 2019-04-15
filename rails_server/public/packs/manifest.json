@@ -1,0 +1,44 @@
+{
+  "_test_card_vue.js": "/packs/js/_test_card_vue-f0ec3b0ed1b9397b315c.js",
+  "_test_card_vue.js.map": "/packs/js/_test_card_vue-f0ec3b0ed1b9397b315c.js.map",
+  "_test_game_index_component.js": "/packs/js/_test_game_index_component-697db3711d6501e406dc.js",
+  "_test_game_index_component.js.map": "/packs/js/_test_game_index_component-697db3711d6501e406dc.js.map",
+  "application.js": "/packs/js/application-50cec5c6b3904ba7fafa.js",
+  "application.js.map": "/packs/js/application-50cec5c6b3904ba7fafa.js.map",
+  "entrypoints": {
+    "_test_card_vue": {
+      "js": [
+        "/packs/js/_test_card_vue-f0ec3b0ed1b9397b315c.js"
+      ],
+      "js.map": [
+        "/packs/js/_test_card_vue-f0ec3b0ed1b9397b315c.js.map"
+      ]
+    },
+    "_test_game_index_component": {
+      "js": [
+        "/packs/js/_test_game_index_component-697db3711d6501e406dc.js"
+      ],
+      "js.map": [
+        "/packs/js/_test_game_index_component-697db3711d6501e406dc.js.map"
+      ]
+    },
+    "application": {
+      "js": [
+        "/packs/js/application-50cec5c6b3904ba7fafa.js"
+      ],
+      "js.map": [
+        "/packs/js/application-50cec5c6b3904ba7fafa.js.map"
+      ]
+    },
+    "index": {
+      "js": [
+        "/packs/js/index-cd91555f6ecdb7ba2f9f.js"
+      ],
+      "js.map": [
+        "/packs/js/index-cd91555f6ecdb7ba2f9f.js.map"
+      ]
+    }
+  },
+  "index.js": "/packs/js/index-cd91555f6ecdb7ba2f9f.js",
+  "index.js.map": "/packs/js/index-cd91555f6ecdb7ba2f9f.js.map"
+}
