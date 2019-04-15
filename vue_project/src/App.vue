@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <h1>Hello</h1>
-        <div class="form-group">
+        <h1>Top 100 Board Games</h1>
+        <!-- <div class="form-group">
           <label>Game Name</label>
           <input class="form-control" type="text" v-model="game_archive.game_name">
         </div>
@@ -11,7 +11,7 @@
           <label>Game Mechanic</label>
           <input class="form-control" type="text" v-model="game_archive.mechanic">
         </div>
-        <button class="btn btn-primary" @click="submit">Submit</button>
+        <button class="btn btn-primary" @click="submit">Submit</button> -->
         <hr>
         <button class="btn btn-primary" @click="fetchData">Get Data</button>
         <ul class="list-group">
