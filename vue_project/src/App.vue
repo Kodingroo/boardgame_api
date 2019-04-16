@@ -1,8 +1,9 @@
 <template>
   <div class="container">
     <div class="margin-top-bottom">
-      <h1>Top 100 Board Games</h1>
+      <h1>Top 100 Board Games of 2019!!</h1>
       <input type="text" v-model="search" placeholder="search games">
+      <!-- <button class="btn btn-primary" @click="fetchData">Get Data</button> -->
       <div class="masonry">
         <div class="item card" v-for="g in filterGames">
           <img :src="g.image_url" class="card-img center-content">
@@ -55,7 +56,7 @@ export default {
   computed: {
     filterGames: function() {
       return this.game_archives.filter((game_archive) => {
-        return game_archive.game_name.match(this.search)
+        return game_archive.game_name.toLowerCase().match(this.search.toLowerCase())
       })
     }
   }
