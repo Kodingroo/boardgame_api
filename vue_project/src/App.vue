@@ -29,7 +29,10 @@ export default {
       game_archive: {
         game_name: "",
         game_rank: "",
-        mechanic: ""
+        playing_time: "",
+        category: "",
+        mechanic: "",
+        designer: ""
       },
       game_archives: []
     }
@@ -43,18 +46,15 @@ export default {
         console.log(error)
       })
     },
-    fetchData() {
-      this.$http.get('https://boardgameapi.herokuapp.com/api/v1/game_archives.json')
-      .then(response => {
-        return response.json()
+    fetchData: function () {
+      var vm = this
+      axios.get('https://boardgameapi.herokuapp.com/api/v1/game_archives')
+      .then(function (response){
+        vm.game_archives = response.data;
       })
-      .then(data => {
-        const resultArray = []
-        for (let key in data) {
-          resultArray.push(data[key]);
-        }
-        this.game_archives = resultArray
-      })
+      .catch(function (error){
+        vm.game_archives = 'An error occured.' + error;
+      });
     }
   }
 }
@@ -63,3 +63,30 @@ export default {
 <style lang="scss">
 
 </style>
+
+
+<!-- fetchData: function () {
+  var vm = this
+  this.get_games = 'Loading...';
+  axios.get('https://boardgameapi.herokuapp.com/api/v1/game_archives')
+  .then(function (response){
+    vm.get_games = response.data;
+  })
+  .catch(function (error){
+    vm.get_games = 'An error occured.' + error;
+  });
+} -->
+
+<!-- fetchData() {
+  this.$http.get('https://boardgameapi.herokuapp.com/api/v1/game_archives.json')
+  .then(response => {
+    return response.json()
+  })
+  .then(data => {
+    const resultArray = []
+    for (let key in data) {
+      resultArray.push(data[key]);
+    }
+    this.game_archives = resultArray
+  })
+} -->
