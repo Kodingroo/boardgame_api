@@ -1,15 +1,8 @@
-<template>
-  <div class="container">
-    <div class="margin-top-bottom">
-      <h1>Top 100 Board Games of 2019!!</h1>
-      <input type="text" v-model="search" placeholder="search games" class="search-bar">
-      <div class="masonry">
-        <game-card></game-card>
-        <!-- <div class="item card" v-for="g in filterGames" @click="myFilter">
-          <img :src="g.image_url" class="card-img center-content">
-          <p v-if="game_archive.isVisible">{{ g.game_rank }}: {{ g.game_name }} - {{ g.designer}}</p> -->
-        </div>
-      </div>
+<template lang="html">
+  <div>
+    <div class="item card" v-for="g in filterGames" @click="myFilter">
+      <img :src="g.image_url" class="card-img center-content">
+      <p v-if="game_archive.isVisible">{{ g.game_rank }}: {{ g.game_name }} - {{ g.designer}}</p>
     </div>
   </div>
 </template>
@@ -60,17 +53,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
-h1 {
-  text-align: center;
-  font-family: 'Raleway', sans-serif;
-}
-
-.masonry { /* Masonry container */
-  column-count: 4;
-  column-gap: 1.5em;
-}
-
+<style lang="css" scoped>
 .item { /* Masonry bricks or child elements */
   background-color: white;
   display: inline-block;
@@ -92,15 +75,5 @@ h1 {
   &:hover {
     outline: 2px solid red;
   }
-}
-
-.margin-top-bottom {
-  margin: 80px 0;
-}
-
-.search-bar {
-  width: 80%;
-  display: block;
-  margin: 0 auto;
 }
 </style>

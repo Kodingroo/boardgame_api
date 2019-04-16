@@ -4,11 +4,14 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-import VueResource from 'vue-resource'
 import axios from 'axios'
+
+import game_card from './game_card.vue'
 
 Vue.use(BootstrapVue)
 Vue.use(VueResource)
+
+Vue.component('game-card', game_card)
 
 new Vue({
   el: '#app',
