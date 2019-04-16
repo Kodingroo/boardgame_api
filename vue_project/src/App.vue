@@ -1,15 +1,13 @@
 <template>
   <div class="container">
     <div class="margin-top-bottom">
-
       <h1>Top 100 Board Games</h1>
-      <button class="btn btn-primary" @click="fetchData">Get Data</button>
-
+      <input type="text" v-model="search" placeholder="search games">
       <div class="masonry">
-          <div class="item card" v-for="g in game_archives">
-            <img :src="g.thumb_url" class="card-img center-content">
-            <p>{{ g.game_rank }}: {{ g.game_name }} - {{ g.designer}}</p>
-          </div>
+        <div class="item card" v-for="g in filterGames">
+          <img :src="g.image_url" class="card-img center-content">
+          <!-- <p>{{ g.game_rank }}: {{ g.game_name }} - {{ g.designer}}</p> -->
+        </div>
       </div>
     </div>
   </div>
@@ -27,8 +25,12 @@ export default {
         mechanic: "",
         designer: ""
       },
-      game_archives: []
+      game_archives: [],
+      search: ""
     }
+  },
+  created: function () {
+    this.fetchData();
   },
   methods: {
     submit() {
@@ -39,7 +41,7 @@ export default {
         console.log(error)
       })
     },
-    fetchData: function () {
+    fetchData() {
       var vm = this
       axios.get('https://boardgameapi.herokuapp.com/api/v1/game_archives')
       .then(function (response){
@@ -49,6 +51,13 @@ export default {
         vm.game_archives = 'An error occured.' + error;
       });
     }
+  },
+  computed: {
+    filterGames: function() {
+      return this.game_archives.filter((game_archive) => {
+        return game_archive.game_name.match(this.search)
+      })
+    }
   }
 }
 </script>
@@ -56,7 +65,7 @@ export default {
 <style lang="scss">
 .masonry { /* Masonry container */
   column-count: 4;
-  column-gap: 1em;
+  column-gap: 1.5em;
 }
 
 .item { /* Masonry bricks or child elements */
