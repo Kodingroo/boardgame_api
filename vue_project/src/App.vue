@@ -6,9 +6,10 @@
       <button class="btn btn-primary" @click="fetchData">Get Data</button>
 
       <div class="masonry">
-        <div class="item">
-          <div class="card" v-for="g in game_archives"><img :src="g.thumb_url" class="card-img"></div>
-        </div>
+          <div class="item card" v-for="g in game_archives">
+            <img :src="g.thumb_url" class="card-img center-content">
+            <p>{{ g.game_rank }}: {{ g.game_name }} - {{ g.designer}}</p>
+          </div>
       </div>
     </div>
   </div>
@@ -79,6 +80,35 @@ export default {
   }
   &:hover {
     outline: 2px solid yellow;
+  }
+}
+
+.card-body {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  background: linear-gradient(115deg, yellow 0%, pink 50%);
+  height: 100%;
+  width: 100%;
+  padding: 1px;
+  transform: translateY(100%);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  & p {
+    color: white;
+    font-size: 15px;
+    font-family: pink;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+  }
+  & h5 {
+    color: black;
+    text-decoration: none;
+    font-size: 15px;
+  }
+  & h4 {
+    color: black;
+    font-size: 30px;
   }
 }
 
