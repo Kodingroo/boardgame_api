@@ -4,10 +4,10 @@
       <h1>Top 100 Board Games of 2019!!</h1>
       <input type="text" v-model="search" placeholder="search games" class="search-bar">
       <div class="masonry">
-        <game-card></game-card>
-        <!-- <div class="item card" v-for="g in filterGames" @click="myFilter">
+        <!-- <game-card></game-card> -->
+        <div class="item card" v-for="g in filterGames" @click="myFilter">
           <img :src="g.image_url" class="card-img center-content">
-          <p v-if="game_archive.isVisible">{{ g.game_rank }}: {{ g.game_name }} - {{ g.designer}}</p> -->
+          <p v-if="game_archive.isVisible">{{ g.game_rank }}: {{ g.game_name }} - {{ g.designer}}</p>
         </div>
       </div>
     </div>
