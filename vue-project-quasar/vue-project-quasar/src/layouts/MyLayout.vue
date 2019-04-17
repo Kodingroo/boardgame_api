@@ -17,7 +17,7 @@
         </q-btn>
 
         <q-toolbar-title>
-          Quasar App
+          Board Game API
           <div slot="subtitle">Running on Quasar v{{ $q.version }}</div>
         </q-toolbar-title>
       </q-toolbar>
