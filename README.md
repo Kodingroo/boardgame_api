@@ -12,8 +12,6 @@ Will get you the JSON file of all games by rank`. E.g:
 
 ```json
 {
-  [
-  {
       "game_name": "Gloomhaven",
       "game_rank": 1,
       "playing_time": 120,
@@ -32,8 +30,6 @@ Will get you the JSON file of all games by rank`. E.g:
       "designer": "Rob Daviau",
       "image_url": "https://cf.geekdo-images.com/original/img/P_SwsOtPLqgk2ScCgI2YrI9Rg6I=/0x0/pic2452831.png",
       "thumb_url": "https://cf.geekdo-images.com/thumb/img/WI5NmPd9C3PpRvHKoP4a0Ettlao=/fit-in/200x150/pic2452831.png"
-  }
-  ]
 }
 ```
 
@@ -80,6 +76,19 @@ Run:
 $ rails server -p 4000 (or any available/valid port)
 ```
 
-Enjoy the API of the current world top 100 board games and let me know if this API was useful.
+## Board Game Vue project documentation
+
+The Vue project folder is an example of Vue's ability to fetch data from an API and display it dynamically. For the purposes of this exercise, you will need to clone this project and follow these steps in order to run it locally:
+
+```
+
+Once cloned, run the following in the terminal from the boardgame_api/vue_project directory:
+  $ npm install
+  $ npm run dev
+
+```
+Enjoy the Vue project search features while browsing the current world top 100 board games. I also hope the API is useful for your own board game research purposes. 
+
+Let me know if either was useful and how you'd like it to be further improved.
 
 Kodingroo@gmail.com
