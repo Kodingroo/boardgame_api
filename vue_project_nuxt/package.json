@@ -6,13 +6,14 @@
   "license": "",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "dev": "nuxt",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.18",
+    "nuxt": "^2.6.2",
     "vue": "^2.6.10",
     "vue-masonry": "^0.11.7"
   },
