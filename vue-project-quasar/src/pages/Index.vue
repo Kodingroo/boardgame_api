@@ -1,28 +1,30 @@
 <template>
-  <div class="container">
-    <div class="margin-top-bottom">
-      <h1>Top 100 Board Games of 2019!!</h1>
-      <input
-        v-model="search"
-        type="text"
-        placeholder="search games"
-        class="search-bar"
-      />
-      <div class="masonry">
-        <div
-          v-for="g in filterGames"
-          :key="g.id"
-          class="item card"
-          @click="myFilter"
-        >
-          <img :src="g.thumb_url" class="card-img center-content" />
-          <p v-if="game_archive.isVisible">
-            {{ g.game_rank }}: {{ g.game_name }} - {{ g.designer }}
-          </p>
+  <q-page class="flex flex-center">
+    <div class="container">
+      <div class="margin-top-bottom">
+        <h1>Top 100 Board Games of 2019!!</h1>
+        <input
+          v-model="search"
+          type="text"
+          placeholder="search games"
+          class="search-bar"
+        />
+        <div class="masonry">
+          <div
+            v-for="g in filterGames"
+            :key="g.id"
+            class="item card"
+            @click="myFilter"
+          >
+            <img :src="g.thumb_url" class="card-img center-content" />
+            <p v-if="game_archive.isVisible">
+              {{ g.game_rank }}: {{ g.game_name }} - {{ g.designer }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </q-page>
 </template>
 
 <script>
