@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import NavBar from '~/components/NavBar.vue'
+import NavBar from "~/components/NavBar.vue"
 export default {
   components: {
     NavBar
@@ -22,7 +22,7 @@ html {
 }
 body {
   margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
   line-height: 1.5;
 }
@@ -54,7 +54,7 @@ h5,
 h6 {
   display: flex;
   align-items: center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 h1 {
   font-size: 50px;
@@ -128,7 +128,7 @@ optgroup,
 select,
 textarea {
   display: inline-flex;
-  font-family: 'Open sans', sans-serif;
+  font-family: "Open sans", sans-serif;
   font-size: 100%;
   line-height: 1.15;
   margin: 0;
@@ -142,22 +142,22 @@ select {
   text-transform: none;
 }
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+[type="button"],
+[type="reset"],
+[type="submit"] {
   -webkit-appearance: none;
 }
 button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
 button:-moz-focusring,
-[type='button']:-moz-focusring,
-[type='reset']:-moz-focusring,
-[type='submit']:-moz-focusring {
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
   outline: 2px solid #39b982;
 }
 label {
@@ -174,35 +174,35 @@ textarea {
   overflow: auto;
   font-size: 20px;
 }
-[type='checkbox'],
-[type='radio'] {
+[type="checkbox"],
+[type="radio"] {
   box-sizing: border-box;
   padding: 0;
 }
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
-[type='search'] {
+[type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
-[type='search']::-webkit-search-decoration {
+[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-[type='text'],
-[type='number'],
-[type='search'],
-[type='password'] {
+[type="text"],
+[type="number"],
+[type="search"],
+[type="password"] {
   height: 52px;
   width: 100%;
   padding: 0 10px;
   font-size: 20px;
 }
-[type='text']:focus,
-[type='number']:focus,
-[type='search']:focus,
-[type='password']:focus {
+[type="text"]:focus,
+[type="number"]:focus,
+[type="search"]:focus,
+[type="password"]:focus {
   border-color: #39b982;
 }
 ::-webkit-file-upload-button {
