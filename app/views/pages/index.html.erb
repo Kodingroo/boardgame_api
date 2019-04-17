@@ -1,5 +1,3 @@
-import "bootstrap;"
-
 <hr>
 <hr>
 <hr>
@@ -8,9 +6,15 @@ import "bootstrap;"
 <div>
 
 <div id="my-target-element">
-  <div>
-
-    <game-index-component></game-index-component>
-
+  <div class="container">
+    <div class="margin-top-bottom">
+      <h1>Top 100 Board Games of 2019!!</h1>
+      <input type="text" v-model="search" placeholder="search games" class="search-bar">
+      <div class="masonry">
+        <div class="item card" v-for="g in filterGames" @click="myFilter">
+          <img :src="g.thumb_url" class="card-img center-content">
+        </div>
+      </div>
+    </div>
   </div>
 </div>

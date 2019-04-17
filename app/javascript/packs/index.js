@@ -1,55 +1,102 @@
 import Vue from 'vue/dist/vue.esm'
 import App from '../app.vue'
 
-Vue.component('game-index-component', {
-  data: function() {
-    return {
-      get_games: ''
-    }
-  },
-  template: '<ul><li v-for="g in get_games"> {{g.game_rank}} : {{ g.game_name }}, <img :src="g.thumb_url"></li></ul>',
-  created: function () {
-    this.fetchData();
-  },
-  methods: {
-    fetchData: function () {
-      var vm = this
-      this.get_games = 'Loading...';
-      axios.get('https://boardgameapi.herokuapp.com/api/v1/game_archives')
-      .then(function (response){
-        vm.get_games = response.data;
-      })
-      .catch(function (error){
-        vm.get_games = 'An error occured.' + error;
-      });
-    }
-  }
-});
-
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#my-target-element',
-    data: {
-      get_games: ''
+    data() {
+      return {
+        game_archive: {
+          game_name: "",
+          game_rank: "",
+          playing_time: "",
+          category: "",
+          mechanic: "",
+          designer: "",
+          isVisible: false
+        },
+        game_archives: [],
+        search: ""
+      }
     },
     created: function () {
       this.fetchData();
     },
     methods: {
-      fetchData: function () {
+      fetchData() {
         var vm = this
-        this.get_games = 'Loading...';
         axios.get('https://boardgameapi.herokuapp.com/api/v1/game_archives')
         .then(function (response){
-          vm.get_games = response.data;
+          vm.game_archives = response.data;
         })
         .catch(function (error){
-          vm.get_games = 'An error occured.' + error;
+          vm.game_archives = 'An error occured.' + error;
         });
+      },
+      myFilter: function(){
+        this.game_archive.isVisible = !this.game_archive.isVisible;
+      }
+    },
+    computed: {
+      filterGames: function() {
+        return this.game_archives.filter((game_archive) => {
+          return game_archive.game_name.toLowerCase().match(this.search.toLowerCase())
+        })
       }
     }
-  });
+  })
 })
+
+//
+// Vue.component('game-index-component', {
+//   data: function() {
+//     return {
+//       get_games: ''
+//     }
+//   },
+//   template: '<ul><li v-for="g in get_games"> {{g.game_rank}} : {{ g.game_name }}, <img :src="g.thumb_url"></li></ul>',
+//   created: function () {
+//     this.fetchData();
+//   },
+//   methods: {
+//     fetchData: function () {
+//       var vm = this
+//       this.get_games = 'Loading...';
+//       axios.get('https://boardgameapi.herokuapp.com/api/v1/game_archives')
+//       .then(function (response){
+//         vm.get_games = response.data;
+//       })
+//       .catch(function (error){
+//         vm.get_games = 'An error occured.' + error;
+//       });
+//     }
+//   }
+// });
+//
+// document.addEventListener('DOMContentLoaded', () => {
+//   const app = new Vue({
+//     el: '#my-target-element',
+//     data: {
+//       get_games: ''
+//     },
+//     created: function () {
+//       this.fetchData();
+//     },
+//     methods: {
+//       fetchData: function () {
+//         var vm = this
+//         this.get_games = 'Loading...';
+//         axios.get('https://boardgameapi.herokuapp.com/api/v1/game_archives')
+//         .then(function (response){
+//           vm.get_games = response.data;
+//         })
+//         .catch(function (error){
+//           vm.get_games = 'An error occured.' + error;
+//         });
+//       }
+//     }
+//   });
+// })
 
 
 // import Vue from 'vue/dist/vue.esm'

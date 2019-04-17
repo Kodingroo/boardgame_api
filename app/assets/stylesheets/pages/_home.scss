@@ -1,1 +1,43 @@
 // Specific CSS for your home-page
+h1 {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+}
+
+.masonry { /* Masonry container */
+  column-count: 5;
+  column-gap: 1.5em;
+  @media only screen and (max-width: 600px) {
+    column-count: 3;
+  }
+}
+
+.item { /* Masonry bricks or child elements */
+  background-color: white;
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
+}
+
+.card {
+  outline: 2px solid black;
+  margin: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  & .card-img {
+    width: 100%;
+  }
+  &:hover {
+    outline: 2px solid red;
+  }
+}
+
+.margin-top-bottom {
+  margin: 80px 0;
+}
+
+.search-bar {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}

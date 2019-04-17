@@ -55,7 +55,7 @@ X-User-Email: `youremail@email.com`
 X-User-Token: `your token from when your create your user in the terminal`
 ```
 
-#### Cloning the API locally
+## Cloning the API locally
 
 From Github, you may click Clone or Download, and then clone to your local harddrive.
 https://github.com/Kodingroo/boardgame_api
@@ -80,14 +80,17 @@ $ rails server -p 4000 (or any available/valid port)
 
 The Vue project folder is an example of Vue's ability to fetch data from an API and display it dynamically. For the purposes of this exercise, you will need to clone this project and follow these steps in order to run it locally:
 
-```
 
 Once cloned, run the following in the terminal from the boardgame_api/vue_project directory:
+```
+  Install:
   $ npm install
+
+  Run:
   $ npm run dev
 
 ```
-Enjoy the Vue project search features while browsing the current world top 100 board games. I also hope the API is useful for your own board game research purposes. 
+Enjoy the Vue project search features while browsing the current world top 100 board games. I also hope the API is useful for your own board game research purposes.
 
 Let me know if either was useful and how you'd like it to be further improved.
 
