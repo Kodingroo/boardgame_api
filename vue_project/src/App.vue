@@ -4,9 +4,8 @@
       <h1>Top 100 Board Games of 2019!!</h1>
       <input type="text" v-model="search" placeholder="search games" class="search-bar">
       <div class="masonry">
-        <!-- <game-card></game-card> -->
         <div class="item card" v-for="g in filterGames" @click="myFilter">
-          <img :src="g.image_url" class="card-img center-content">
+          <img :src="g.thumb_url" class="card-img center-content">
           <p v-if="game_archive.isVisible">{{ g.game_rank }}: {{ g.game_name }} - {{ g.designer}}</p>
         </div>
       </div>
@@ -47,7 +46,6 @@ export default {
     },
     myFilter: function(){
       this.game_archive.isVisible = !this.game_archive.isVisible;
-      // some code to filter users
     }
   },
   computed: {
@@ -67,8 +65,11 @@ h1 {
 }
 
 .masonry { /* Masonry container */
-  column-count: 4;
+  column-count: 5;
   column-gap: 1.5em;
+  @media only screen and (max-width: 600px) {
+    column-count: 3;
+  }
 }
 
 .item { /* Masonry bricks or child elements */
@@ -79,10 +80,7 @@ h1 {
 }
 
 .card {
-  position: relative;
   outline: 2px solid black;
-  width: 100%;
-  background-size: cover;
   margin: 10px;
   overflow: hidden;
   cursor: pointer;

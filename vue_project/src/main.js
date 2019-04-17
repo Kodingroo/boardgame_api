@@ -6,12 +6,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import axios from 'axios'
 
-import game_card from './game_card.vue'
-
 Vue.use(BootstrapVue)
-Vue.use(VueResource)
-
-Vue.component('game-card', game_card)
 
 new Vue({
   el: '#app',
