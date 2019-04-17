@@ -1,9 +1,9 @@
 <template>
   <div class="nav">
-    <nuxt-link to="/" class="brand">Real World Events</nuxt-link>
+    <nuxt-link to="/" class="brand">Board Game API</nuxt-link>
     <nav>
-      <nuxt-link to="/">List</nuxt-link>&nbsp;|
-      <nuxt-link to="/create">Create</nuxt-link>
+      <nuxt-link to="/">Games</nuxt-link>&nbsp;|
+      <nuxt-link to="/add">Add</nuxt-link>
     </nav>
   </div>
 </template>
