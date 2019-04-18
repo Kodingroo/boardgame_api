@@ -100,7 +100,11 @@ export default {
   computed: {
     filterGames: function() {
       return this.game_archives.filter((game_archive) => {
-        return game_archive.game_name.toLowerCase().match(this.search.toLowerCase())
+        return game_archive.game_name.toLowerCase().match(this.search.toLowerCase()) ||
+               game_archive.category.toLowerCase().match(this.search.toLowerCase()) ||
+               game_archive.mechanic.toLowerCase().match(this.search.toLowerCase()) ||
+               game_archive.designer.toLowerCase().match(this.search.toLowerCase())
+
       })
     }
   }
@@ -141,7 +145,6 @@ h1 {
   }
   span {
     display: block;
-    text-align: center;
   }
 }
 
