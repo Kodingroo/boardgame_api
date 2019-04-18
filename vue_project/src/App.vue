@@ -7,11 +7,11 @@
         <div class=checkboxes>
           <div>
             <label>Game Names </label>
-            <input type="checkbox" name="game_name" :checked="isAllSelected" @click="filterNames">
+            <input type="checkbox" name="game_name" :checked="filterNames" @click="filterNames">
           </div>
           <div>
             <label>Game Ranks </label>
-            <input type="checkbox" name="game_rank" :checked="isAllSelected" @click="filterRanks">
+            <input type="checkbox" name="game_rank" :checked="isAllSelected" @change="filterRanks">
           </div>
           <div>
             <label>Playing Times </label>

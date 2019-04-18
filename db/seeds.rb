@@ -85,6 +85,7 @@ def get_titles(id_range)
 end
 
 ranked_titles << get_titles(1..100)
+ranked_titles << get_titles(150811)
 
 puts "Finished seeding database..."
 puts ""
