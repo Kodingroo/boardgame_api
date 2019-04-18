@@ -7,27 +7,27 @@
         <div class=checkboxes>
           <div>
             <label>Game Names </label>
-            <input type="checkbox" name="game_name" :checked="filterNames" @click="filterNames">
+            <input type="checkbox" name="game_name" ref="selectName" :checked="isAllSelected" @click="filterNames">
           </div>
           <div>
             <label>Game Ranks </label>
-            <input type="checkbox" name="game_rank" :checked="isAllSelected" @change="filterRanks">
+            <input type="checkbox" name="game_rank" ref="selectRank" :checked="isAllSelected" @click="filterRanks">
           </div>
           <div>
             <label>Playing Times </label>
-            <input type="checkbox" name="playing_time" :checked="isAllSelected" @click="filterTimes">
+            <input type="checkbox" name="playing_time" ref="selectPlayingTime" :checked="isAllSelected" @click="filterTimes">
           </div>
           <div>
             <label>Categories </label>
-            <input type="checkbox" name="category" :checked="isAllSelected" @click="filterCategories">
+            <input type="checkbox" name="category" ref="selectCategory" :checked="isAllSelected" @click="filterCategories">
           </div>
           <div>
             <label>Mechanics </label>
-            <input type="checkbox" name="mechanic" :checked="isAllSelected" @click="filterMechanics">
+            <input type="checkbox" name="mechanic" ref="selectMechanic" :checked="isAllSelected" @click="filterMechanics">
           </div>
           <div>
             <label>Designers </label>
-            <input type="checkbox" name="designer" :checked="isAllSelected" @click="filterDesigners">
+            <input type="checkbox" name="designer" ref="selectDesigner" :checked="isAllSelected" @click="filterDesigners">
           </div>
           <div>
             <label>Select All </label>
@@ -102,6 +102,13 @@ export default {
       this.game_archive.designer = !this.game_archive.designer;
     },
     selectAllCheckboxes () {
+      this.$refs.selectName.click()
+      this.$refs.selectRank.click()
+      this.$refs.selectPlayingTime.click()
+      this.$refs.selectCategory.click()
+      this.$refs.selectMechanic.click()
+      this.$refs.selectDesigner.click()
+
       if (this.isAllSelected) {
         this.isAllSelected = false
       } else {
