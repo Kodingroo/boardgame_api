@@ -7,27 +7,31 @@
         <div class=checkboxes>
           <div>
             <label>Game Names </label>
-            <input type="checkbox" name="game_name" @click="filterNames">
+            <input type="checkbox" name="game_name" :checked="isAllSelected" @click="filterNames">
           </div>
           <div>
             <label>Game Ranks </label>
-            <input type="checkbox" name="game_rank" @click="filterRanks">
+            <input type="checkbox" name="game_rank" :checked="isAllSelected" @click="filterRanks">
           </div>
           <div>
             <label>Playing Times </label>
-            <input type="checkbox" name="playing_time" @click="filterTimes">
+            <input type="checkbox" name="playing_time" :checked="isAllSelected" @click="filterTimes">
           </div>
           <div>
             <label>Categories </label>
-            <input type="checkbox" name="category" @click="filterCategories">
+            <input type="checkbox" name="category" :checked="isAllSelected" @click="filterCategories">
           </div>
           <div>
             <label>Mechanics </label>
-            <input type="checkbox" name="mechanic" @click="filterMechanics">
+            <input type="checkbox" name="mechanic" :checked="isAllSelected" @click="filterMechanics">
           </div>
           <div>
             <label>Designers </label>
-            <input type="checkbox" name="designer" @click="filterDesigners">
+            <input type="checkbox" name="designer" :checked="isAllSelected" @click="filterDesigners">
+          </div>
+          <div>
+            <label>Select All </label>
+            <input type="checkbox" :checked="isAllSelected" @click="selectAllCheckboxes">
           </div>
         </div>
 
@@ -61,7 +65,8 @@ export default {
         isVisible: false
       },
       game_archives: [],
-      search: ""
+      search: "",
+      isAllSelected: false
     }
   },
   created: function () {
@@ -95,15 +100,22 @@ export default {
     },
     filterDesigners: function(){
       this.game_archive.designer = !this.game_archive.designer;
+    },
+    selectAllCheckboxes () {
+      if (this.isAllSelected) {
+        this.isAllSelected = false
+      } else {
+        this.isAllSelected = true
+      }
     }
   },
   computed: {
     filterGames: function() {
       return this.game_archives.filter((game_archive) => {
         return game_archive.game_name.toLowerCase().match(this.search.toLowerCase()) ||
-               game_archive.category.toLowerCase().match(this.search.toLowerCase()) ||
-               game_archive.mechanic.toLowerCase().match(this.search.toLowerCase()) ||
-               game_archive.designer.toLowerCase().match(this.search.toLowerCase())
+        game_archive.category.toLowerCase().match(this.search.toLowerCase()) ||
+        game_archive.mechanic.toLowerCase().match(this.search.toLowerCase()) ||
+        game_archive.designer.toLowerCase().match(this.search.toLowerCase())
 
       })
     }
