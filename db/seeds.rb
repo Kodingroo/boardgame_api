@@ -1,6 +1,9 @@
 require 'nokogiri'
 require 'open-uri'
 
+GameArchive.destroy_all if Rails.env.development?
+GameItem.destroy_all if Rails.env.development?
+
 # GAMES DATABASE
 
 ranked_titles = []
@@ -30,7 +33,7 @@ def get_titles(id_range)
 
     # PARSE API
 
-    api_url = "https://www.boardgamegeek.com/xmlapi2/thing?id=150811"
+    api_url = "https://www.boardgamegeek.com/xmlapi2/thing?id=#{bgg_id}"
     xml_data = open(api_url).read
     xml_doc = Nokogiri::HTML(xml_data)
 
