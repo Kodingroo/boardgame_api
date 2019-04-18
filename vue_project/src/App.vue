@@ -1,11 +1,46 @@
 <template>
-  <div class="container">
-    <div class="margin-top-bottom">
-      <h1>Top 100 Board Games of 2019!!</h1>
-      <input type="text" v-model="search" placeholder="search games" class="search-bar">
-      <div class="masonry">
-        <div class="item card" v-for="g in filterGames" @click="myFilter">
-          <img :src="g.thumb_url" class="card-img center-content">
+  <div id="my-target-element">
+    <div class="container">
+      <div class="margin-top-bottom">
+        <h1>Top 100 Board Games of 2019!!</h1>
+        <input type="text" v-model="search" placeholder="search games" class="search-bar">
+        <div class=checkboxes>
+          <div>
+            <label>Game Names </label>
+            <input type="checkbox" name="game_name" @click="filterNames">
+          </div>
+          <div>
+            <label>Game Ranks </label>
+            <input type="checkbox" name="game_rank" @click="filterRanks">
+          </div>
+          <div>
+            <label>Playing Times </label>
+            <input type="checkbox" name="playing_time" @click="filterTimes">
+          </div>
+          <div>
+            <label>Categories </label>
+            <input type="checkbox" name="category" @click="filterCategories">
+          </div>
+          <div>
+            <label>Mechanics </label>
+            <input type="checkbox" name="mechanic" @click="filterMechanics">
+          </div>
+          <div>
+            <label>Designers </label>
+            <input type="checkbox" name="designer" @click="filterDesigners">
+          </div>
+        </div>
+
+        <div class="masonry">
+          <div class="item card" v-for="g in filterGames">
+            <img :src="g.thumb_url" class="card-img center-content">
+            <span v-if="game_archive.game_name"><b>{{ g.game_name }}</b></span>
+            <span v-if="game_archive.game_rank"><i>Rank:</i> {{ g.game_rank }}</span>
+            <span v-if="game_archive.playing_time">{{ g.playing_time }} <i>minutes</i></span>
+            <span v-if="game_archive.category"><i>Category:</i> {{ g.category}}</span>
+            <span v-if="game_archive.mechanic"><i>Mechanic:</i> {{ g.mechanic}}</span>
+            <span v-if="game_archive.designer"><i>Designer:</i> {{ g.designer}}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -43,8 +78,23 @@ export default {
         vm.game_archives = 'An error occured.' + error;
       });
     },
-    myFilter: function(){
-      this.game_archive.isVisible = !this.game_archive.isVisible;
+    filterRanks: function(){
+      this.game_archive.game_rank = !this.game_archive.game_rank;
+    },
+    filterNames: function(){
+      this.game_archive.game_name = !this.game_archive.game_name;
+    },
+    filterTimes: function(){
+      this.game_archive.playing_time = !this.game_archive.playing_time;
+    },
+    filterCategories: function(){
+      this.game_archive.category = !this.game_archive.category;
+    },
+    filterMechanics: function(){
+      this.game_archive.mechanic = !this.game_archive.mechanic;
+    },
+    filterDesigners: function(){
+      this.game_archive.designer = !this.game_archive.designer;
     }
   },
   computed: {
@@ -89,6 +139,10 @@ h1 {
   &:hover {
     outline: 2px solid red;
   }
+  span {
+    display: block;
+    text-align: center;
+  }
 }
 
 .margin-top-bottom {
@@ -99,5 +153,17 @@ h1 {
   width: 80%;
   display: block;
   margin: 0 auto;
+}
+
+.checkboxes {
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  width: 100%; /*Optional*/
+  padding: 20px;
+  div {
+    justify-content: space-between;
+    padding-right: 20px;
+  }
 }
 </style>
