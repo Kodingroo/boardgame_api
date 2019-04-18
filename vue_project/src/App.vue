@@ -6,7 +6,6 @@
       <div class="masonry">
         <div class="item card" v-for="g in filterGames" @click="myFilter">
           <img :src="g.thumb_url" class="card-img center-content">
-          <p v-if="game_archive.isVisible">{{ g.game_rank }}: {{ g.game_name }} - {{ g.designer}}</p>
         </div>
       </div>
     </div>

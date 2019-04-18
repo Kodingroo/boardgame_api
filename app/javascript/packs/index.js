@@ -32,8 +32,23 @@ document.addEventListener('DOMContentLoaded', () => {
           vm.game_archives = 'An error occured.' + error;
         });
       },
-      myFilter: function(){
-        this.game_archive.isVisible = !this.game_archive.isVisible;
+      filterRanks: function(){
+        this.game_archive.game_rank = !this.game_archive.game_rank;
+      },
+      filterNames: function(){
+        this.game_archive.game_name = !this.game_archive.game_name;
+      },
+      filterTimes: function(){
+        this.game_archive.playing_time = !this.game_archive.playing_time;
+      },
+      filterCategories: function(){
+        this.game_archive.category = !this.game_archive.category;
+      },
+      filterMechanics: function(){
+        this.game_archive.mechanic = !this.game_archive.mechanic;
+      },
+      filterDesigners: function(){
+        this.game_archive.designer = !this.game_archive.designer;
       }
     },
     computed: {
