@@ -2,18 +2,18 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <app-user></app-user>
+                <app-game-index></app-game-index>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import User from './components/User.vue';
+    import GameIndex from './components/GameIndex.vue';
 
     export default {
         components: {
-            appUser: User
+            appGameIndex: GameIndex
         }
     }
 </script>
