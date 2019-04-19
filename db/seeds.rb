@@ -7,11 +7,12 @@ GameItem.destroy_all if Rails.env.development?
 # GAMES DATABASE
 
 ranked_titles = []
+game_rank_counter = 1
 
-def get_titles(id_range)
-  id_range = id_range.to_a
+def get_titles(pages_count)
+  pages_count = pages_count.to_a
 
-  id_range.each_with_index do |_page, index|
+  pages_count.each_with_index do |_page, index|
 
     url = "https://boardgamegeek.com/browse/boardgame/page/#{_page}"
 
@@ -28,7 +29,9 @@ def get_titles(id_range)
 
       game[:user_id] = 1
       game[:game_name] = name_array[0]
-      game[:game_rank] = _item
+
+      game[:game_rank] = game_rank_counter
+      game_rank_counter += 1
       #
       bgg_code = html_doc.search("#results_objectname#{_item} > a")[0]['href'].scan(/game.([0-9]*)/)
       bgg_id = bgg_code[0][0].to_i
