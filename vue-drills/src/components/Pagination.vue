@@ -1,6 +1,5 @@
-<template lan<div id="app">
-  <paginated-list :list-data="people"/>
-</div>
+<template lang="html">
+
 </template>
 
 <script>

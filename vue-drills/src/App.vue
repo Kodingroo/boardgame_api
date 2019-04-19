@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <app-game-index></app-game-index>
+                <app-game-archive></app-game-archive>
             </div>
         </div>
     </div>
@@ -10,12 +11,16 @@
 
 <script>
     import GameIndex from './components/GameIndex.vue';
+    import GameArchive from './components/GameArchive.vue'
 
     export default {
         components: {
-            appGameIndex: GameIndex
+            appGameIndex: GameIndex,
+            appGameArchive: GameArchive
         }
     }
+
+
 </script>
 
 <style>
