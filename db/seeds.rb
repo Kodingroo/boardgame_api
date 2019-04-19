@@ -7,9 +7,9 @@ GameItem.destroy_all if Rails.env.development?
 # GAMES DATABASE
 
 ranked_titles = []
-game_rank_counter = 1
 
 def get_titles(pages_count)
+  game_rank_counter = 1
   pages_count = pages_count.to_a
 
   pages_count.each_with_index do |_page, index|
