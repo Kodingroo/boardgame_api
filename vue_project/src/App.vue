@@ -34,22 +34,16 @@
             <input type="checkbox" :checked="isAllSelected" @click="selectAllCheckboxes">
           </div>
         </div>
-        <div id="app">
-          <paginated-list :list-data="people"/>
-        </div>
 
-        <div id="pages">
-          <paginated-list :list-data="people"/>
-          <div class="masonry">
-            <div class="item card" v-for="g in filterGames">
-              <img :src="g.thumb_url" class="card-img center-content">
-              <span v-if="game_archive.game_name"><b>{{ g.game_name }}</b></span>
-              <span v-if="game_archive.game_rank"><i>Rank:</i> {{ g.game_rank }}</span>
-              <span v-if="game_archive.playing_time">{{ g.playing_time }} <i>minutes</i></span>
-              <span v-if="game_archive.category"><i>Category:</i> {{ g.category}}</span>
-              <span v-if="game_archive.mechanic"><i>Mechanic:</i> {{ g.mechanic}}</span>
-              <span v-if="game_archive.designer"><i>Designer:</i> {{ g.designer}}</span>
-            </div>
+        <div class="masonry">
+          <div class="item card" v-for="g in filterGames">
+            <img :src="g.thumb_url" class="card-img center-content">
+            <span v-if="game_archive.game_name"><b>{{ g.game_name }}</b></span>
+            <span v-if="game_archive.game_rank"><i>Rank:</i> {{ g.game_rank }}</span>
+            <span v-if="game_archive.playing_time">{{ g.playing_time }} <i>minutes</i></span>
+            <span v-if="game_archive.category"><i>Category:</i> {{ g.category}}</span>
+            <span v-if="game_archive.mechanic"><i>Mechanic:</i> {{ g.mechanic}}</span>
+            <span v-if="game_archive.designer"><i>Designer:</i> {{ g.designer}}</span>
           </div>
         </div>
       </div>
@@ -58,8 +52,6 @@
 </template>
 
 <script>
-import Pagination from './components/pagination.vue'
-
 export default {
   data() {
     return {
