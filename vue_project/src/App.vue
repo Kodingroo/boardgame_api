@@ -7,27 +7,27 @@
         <div class=checkboxes>
           <div>
             <label>Game Names </label>
-            <input type="checkbox" name="game_name" ref="selectName" :checked="isAllSelected" @click="filterNames">
+            <input type="checkbox" name="game_name" ref="selectName" :checked="isAllSelected = $event" @click="filterNames">
           </div>
           <div>
             <label>Game Ranks </label>
-            <input type="checkbox" name="game_rank" ref="selectRank" :checked="isAllSelected" @click="filterRanks">
+            <input type="checkbox" name="game_rank" ref="selectRank" :checked="isAllSelected = $event" @click="filterRanks">
           </div>
           <div>
             <label>Playing Times </label>
-            <input type="checkbox" name="playing_time" ref="selectPlayingTime" :checked="isAllSelected" @click="filterTimes">
+            <input type="checkbox" name="playing_time" ref="selectPlayingTime" :checked="isAllSelected = $event" @click="filterTimes">
           </div>
           <div>
             <label>Categories </label>
-            <input type="checkbox" name="category" ref="selectCategory" :checked="isAllSelected" @click="filterCategories">
+            <input type="checkbox" name="category" ref="selectCategory" :checked="isAllSelected = $event" @click="filterCategories">
           </div>
           <div>
             <label>Mechanics </label>
-            <input type="checkbox" name="mechanic" ref="selectMechanic" :checked="isAllSelected" @click="filterMechanics">
+            <input type="checkbox" name="mechanic" ref="selectMechanic" :checked="isAllSelected = $event" @click="filterMechanics">
           </div>
           <div>
             <label>Designers </label>
-            <input type="checkbox" name="designer" ref="selectDesigner" :checked="isAllSelected" @click="filterDesigners">
+            <input type="checkbox" name="designer" ref="selectDesigner" :checked="isAllSelected = $event" @click="filterDesigners">
           </div>
           <div>
             <label>Select All </label>
