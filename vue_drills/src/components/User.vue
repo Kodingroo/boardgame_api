@@ -1,12 +1,13 @@
 <template>
     <div class="component">
-        <h1>The User Component</h1>
+        <h1>Parent:  The User Component</h1>
         <p>I'm an awesome User!</p>
         <button type="button" name="button" @click="changeName">Change my Name</button>
+        <p>User Name: {{ name }}</p>
         <hr>
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <app-user-detail :name="name" :hobby="hobby"></app-user-detail>
+                <app-user-detail :myName="name" :hobby="hobby" @nameWasReset="name = $event"></app-user-detail>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <app-user-edit></app-user-edit>

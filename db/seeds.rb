@@ -91,7 +91,7 @@ def get_titles(pages_count)
   end
 end
 
-ranked_titles << get_titles(1..5)
+ranked_titles << get_titles(1..3)
 
 puts "Finished seeding database..."
 puts ""
