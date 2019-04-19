@@ -29,7 +29,6 @@ def get_titles(pages_count)
 
       game[:user_id] = 1
       game[:game_name] = name_array[0]
-
       game[:game_rank] = game_rank_counter
       game_rank_counter += 1
       #
@@ -92,7 +91,7 @@ def get_titles(pages_count)
   end
 end
 
-ranked_titles << get_titles(1..3)
+ranked_titles << get_titles(1..5)
 
 puts "Finished seeding database..."
 puts ""
