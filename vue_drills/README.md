@@ -1,4 +1,4 @@
-# vue_drills
+# vue-cli
 
 > A Vue.js project
 
