@@ -10,7 +10,7 @@
 </template>
 
 <script>
-    import GameIndex from './components/GameIndex.vue';
+    import GameIndex from './components/GameIndex.vue'
     import GameArchive from './components/GameArchive.vue'
 
     export default {
@@ -19,8 +19,6 @@
             appGameArchive: GameArchive
         }
     }
-
-
 </script>
 
 <style>
