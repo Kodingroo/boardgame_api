@@ -6,8 +6,7 @@
         <input type="text" name="" value="" v-model="search">
         <hr>
         <ul>
-          <li v-for="g in filterGames">{{ g }}</li>
-          <li v-for="g in game_archives">{{ g.game_name }}</li>
+          <li v-for="g in filterGames">{{ g.game_rank }}: {{ g.game_name }} - {{ g.mechanic }}</li>
         </ul>
       </div>
     </div>
@@ -19,15 +18,13 @@ import { GameArchiveMixin } from './GameArchiveMixin'
 
 export default {
   mixins: [ GameArchiveMixin ],
-  data() {
-    return {
-      game_archives: []
-    }
-  },
   computed: {
     filterGames: function() {
-      return this.gameArchive.filter((game_archive) => {
-        return game_archive.toLowerCase().match(this.search.toLowerCase())
+      return this.game_archives.filter((game_archive) => {
+        return game_archive.game_name.toLowerCase().match(this.search.toLowerCase()) ||
+        game_archive.category.toLowerCase().match(this.search.toLowerCase()) ||
+        game_archive.mechanic.toLowerCase().match(this.search.toLowerCase()) ||
+        game_archive.designer.toLowerCase().match(this.search.toLowerCase())
       })
     }
   }

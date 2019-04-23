@@ -10,13 +10,10 @@ export const GameArchiveMixin = {
         playing_time: "",
         category: "",
         mechanic: "",
-        designer: "",
-        isVisible: false
+        designer: ""
       },
       search: "",
-      isAllSelected: false,
-      gameArchive: ['Mythotopia', 'Game of Thrones', 'Dragonfire'],
-      filterSearchGames: ''
+      isAllSelected: false
     }
   },
   created: function () {

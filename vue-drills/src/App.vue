@@ -2,7 +2,6 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <app-game-index></app-game-index>
                 <app-game-archive></app-game-archive>
             </div>
         </div>
