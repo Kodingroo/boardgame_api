@@ -7,6 +7,7 @@
         <hr>
         <ul>
           <li v-for="g in filterGames">{{ g }}</li>
+          <li v-for="g in game_archives">{{ g.game_name }}</li>
         </ul>
       </div>
     </div>
@@ -18,6 +19,11 @@ import { GameArchiveMixin } from './GameArchiveMixin'
 
 export default {
   mixins: [ GameArchiveMixin ],
+  data() {
+    return {
+      game_archives: []
+    }
+  },
   computed: {
     filterGames: function() {
       return this.gameArchive.filter((game_archive) => {

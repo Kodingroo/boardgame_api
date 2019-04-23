@@ -36,16 +36,16 @@ import SearchBar from './SearchBar.vue';
 export default {
   data: function () {
     return {
-      name: 'Max',
+      name: 'DefaultName',
       age: 27
     };
   },
   methods: {
     changeName() {
-      this.name = 'Anna';
+      this.name = 'ChangeName';
     },
     resetName() {
-      this.name = 'Max';
+      this.name = 'ResetName';
     }
   },
   components: {

@@ -25,7 +25,7 @@
                 return this.myName.split("").reverse().join("");
             },
             resetName() {
-                this.myName = 'Max';
+                this.myName = 'ChildResetName';
                 this.$emit('nameWasReset', this.myName);
             }
         },

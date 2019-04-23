@@ -2,8 +2,8 @@ import axios from 'axios'
 
 export const GameArchiveMixin = {
   data() {
-    game_archives: []
     return {
+      game_archives: [],
       game_archive: {
         game_name: "",
         game_rank: "",
@@ -15,7 +15,7 @@ export const GameArchiveMixin = {
       },
       search: "",
       isAllSelected: false,
-      gameArchive: ['Mythotopia', 'Game of Thrones'],
+      gameArchive: ['Mythotopia', 'Game of Thrones', 'Dragonfire'],
       filterSearchGames: ''
     }
   },
@@ -27,8 +27,7 @@ export const GameArchiveMixin = {
       var vm = this
       axios.get('https://boardgameapi.herokuapp.com/api/v1/game_archives')
       .then(function (response){
-        vm.game_archives = response.data;
-        console.log(game_archives.first)
+        vm.game_archives = response.data
       })
       .catch(function (error){
         vm.game_archives = 'An error occured.' + error;

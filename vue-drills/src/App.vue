@@ -16,7 +16,7 @@
     export default {
         components: {
             appGameIndex: GameIndex,
-            appGameArchive: GameArchive
+            appGameArchive: GameArchive,
         }
     }
 </script>
