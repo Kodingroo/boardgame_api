@@ -5,6 +5,7 @@
         <h1>Game Search</h1>
         <input type="text" name="" value="" v-model="search">
         <hr>
+        <app-infinite-scroll></app-infinite-scroll>
         <ul>
           <li v-for="g in filterGames">{{ g.game_rank }}: {{ g.game_name }} - {{ g.mechanic }}</li>
         </ul>
@@ -15,9 +16,13 @@
 
 <script>
 import { GameArchiveMixin } from './GameArchiveMixin'
+import InfiniteScroll from './InfiniteScroll.vue'
 
 export default {
   mixins: [ GameArchiveMixin ],
+  components: {
+    appInfiniteScroll: InfiniteScroll
+  },
   computed: {
     filterGames: function() {
       return this.game_archives.filter((game_archive) => {
