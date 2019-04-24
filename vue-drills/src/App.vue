@@ -3,7 +3,6 @@
         <div class="row">
             <div class="col-xs-12">
                 <app-game-archive></app-game-archive>
-                <app-game-index></app-game-index>
             </div>
         </div>
     </div>
@@ -16,7 +15,7 @@
     export default {
         components: {
             appGameIndex: GameIndex,
-            appGameArchive: GameArchive,
+            appGameArchive: GameArchive
         }
     }
 </script>
