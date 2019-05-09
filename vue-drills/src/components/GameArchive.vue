@@ -19,22 +19,22 @@
       :current-page="currentPage"
       small
       >
-    </b-table>
+      </b-table>
+    </div>
+    <!--
+    <div class="">
+    <div class="heading">
+    <h1>Infinite Scroll</h1>
+    <h4>A simple infinite scroll example using Vue.js</h4>
   </div>
-  <!--
-  <div class="">
-  <div class="heading">
-  <h1>Infinite Scroll</h1>
-  <h4>A simple infinite scroll example using Vue.js</h4>
-</div>
 
-<div class="container" id="app">
-<input type="text" name="" value="" v-model="search">
+  <div class="container" id="app">
+  <input type="text" name="" value="" v-model="search">
 
-<div class="list-group-wrapper">
-<transition name="fade">
-<div class="loading" v-show="loading">
-<span class="fa fa-spinner fa-spin"></span> Loading
+  <div class="list-group-wrapper">
+  <transition name="fade">
+  <div class="loading" v-show="loading">
+  <span class="fa fa-spinner fa-spin"></span> Loading
 </div>
 </transition>
 <ul class="list-group" id="infinite-list">
