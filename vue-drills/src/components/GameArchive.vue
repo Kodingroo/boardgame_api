@@ -2,6 +2,7 @@
   <div class="">
 
     <div class="overflow-auto">
+      <input type="text" name="" value="" v-model="search">
       <b-pagination
       v-model="currentPage"
       :total-rows="rows"
@@ -17,45 +18,46 @@
       :per-page="perPage"
       :current-page="currentPage"
       small
-      ></b-table>
-    </div>
-<!--
-    <div class="">
-      <div class="heading">
-        <h1>Infinite Scroll</h1>
-        <h4>A simple infinite scroll example using Vue.js</h4>
-      </div>
-
-      <div class="container" id="app">
-        <input type="text" name="" value="" v-model="search">
-
-        <div class="list-group-wrapper">
-          <transition name="fade">
-            <div class="loading" v-show="loading">
-              <span class="fa fa-spinner fa-spin"></span> Loading
-            </div>
-          </transition>
-          <ul class="list-group" id="infinite-list">
-            <li class="list-group-item" v-for="g in filterGames">{{ g.game_rank }}: {{ g.game_name }} - {{ g.mechanic }}</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-8 col-sm-offset-2 cold-md-6 col-md-offset-3">
-            <h1>Game Search</h1>
-            <hr>
-            <input type="text" name="" value="" v-model="search">
-            <ul>
-              <li v-for="g in filterGames">{{ g.game_rank }}: {{ g.game_name }} - {{ g.mechanic }}</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
--->
+      >
+    </b-table>
   </div>
+  <!--
+  <div class="">
+  <div class="heading">
+  <h1>Infinite Scroll</h1>
+  <h4>A simple infinite scroll example using Vue.js</h4>
+</div>
+
+<div class="container" id="app">
+<input type="text" name="" value="" v-model="search">
+
+<div class="list-group-wrapper">
+<transition name="fade">
+<div class="loading" v-show="loading">
+<span class="fa fa-spinner fa-spin"></span> Loading
+</div>
+</transition>
+<ul class="list-group" id="infinite-list">
+<li class="list-group-item" v-for="g in filterGames">{{ g.game_rank }}: {{ g.game_name }} - {{ g.mechanic }}</li>
+</ul>
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-sm-8 col-sm-offset-2 cold-md-6 col-md-offset-3">
+<h1>Game Search</h1>
+<hr>
+<input type="text" name="" value="" v-model="search">
+<ul>
+<li v-for="g in filterGames">{{ g.game_rank }}: {{ g.game_name }} - {{ g.mechanic }}</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+-->
+</div>
 </template>
 
 <script>
@@ -83,19 +85,8 @@ export default {
   },
   data() {
     return {
-      perPage: 25,
-      currentPage: 1,
-      items: [
-        { id: 1, first_name: 'Isaac', last_name: 'Hayward' },
-        { id: 2, first_name: 'Wilma', last_name: 'Flintstone' },
-        { id: 3, first_name: 'Barney', last_name: 'Rubble' },
-        { id: 4, first_name: 'Betty', last_name: 'Rubble' },
-        { id: 5, first_name: 'Pebbles', last_name: 'Flintstone' },
-        { id: 6, first_name: 'Bamm Bamm', last_name: 'Rubble' },
-        { id: 7, first_name: 'The Great', last_name: 'Gazzoo' },
-        { id: 8, first_name: 'Mr', last_name: 'Slate' },
-        { id: 9, first_name: 'Pearl', last_name: 'Slaghoople' }
-      ]
+      perPage: 10,
+      currentPage: 1
     }
   }
 }
