@@ -13,7 +13,7 @@
 
       <b-table
       id="my-table"
-      :items="items"
+      :items="filterGames"
       :per-page="perPage"
       :current-page="currentPage"
       small
@@ -78,15 +78,15 @@ export default {
       })
     },
     rows() {
-      return this.items.length
+      return this.filterGames.length
     }
   },
   data() {
     return {
-      perPage: 3,
+      perPage: 25,
       currentPage: 1,
       items: [
-        { id: 1, first_name: 'Fred', last_name: 'Flintstone' },
+        { id: 1, first_name: 'Isaac', last_name: 'Hayward' },
         { id: 2, first_name: 'Wilma', last_name: 'Flintstone' },
         { id: 3, first_name: 'Barney', last_name: 'Rubble' },
         { id: 4, first_name: 'Betty', last_name: 'Rubble' },
