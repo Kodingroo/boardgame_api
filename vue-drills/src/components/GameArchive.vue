@@ -1,38 +1,61 @@
 <template lang="html">
-<div class="">
-  <div class="heading">
-    <h1>Infinite Scroll</h1>
-    <h4>A simple infinite scroll example using Vue.js</h4>
-  </div>
+  <div class="">
 
-  <div class="container" id="app">
-    <input type="text" name="" value="" v-model="search">
+    <div class="overflow-auto">
+      <b-pagination
+      v-model="currentPage"
+      :total-rows="rows"
+      :per-page="perPage"
+      aria-controls="my-table"
+      ></b-pagination>
 
-    <div class="list-group-wrapper">
-      <transition name="fade">
-        <div class="loading" v-show="loading">
-          <span class="fa fa-spinner fa-spin"></span> Loading
-        </div>
-      </transition>
-      <ul class="list-group" id="infinite-list">
-        <li class="list-group-item" v-for="item in items" v-text="item"></li>
-      </ul>
+      <p class="mt-3">Current Page: {{ currentPage }}</p>
+
+      <b-table
+      id="my-table"
+      :items="items"
+      :per-page="perPage"
+      :current-page="currentPage"
+      small
+      ></b-table>
     </div>
-  </div>
+<!--
+    <div class="">
+      <div class="heading">
+        <h1>Infinite Scroll</h1>
+        <h4>A simple infinite scroll example using Vue.js</h4>
+      </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-8 col-sm-offset-2 cold-md-6 col-md-offset-3">
-        <h1>Game Search</h1>
-        <hr>
+      <div class="container" id="app">
         <input type="text" name="" value="" v-model="search">
-        <ul>
-          <li v-for="g in filterGames">{{ g.game_rank }}: {{ g.game_name }} - {{ g.mechanic }}</li>
-        </ul>
+
+        <div class="list-group-wrapper">
+          <transition name="fade">
+            <div class="loading" v-show="loading">
+              <span class="fa fa-spinner fa-spin"></span> Loading
+            </div>
+          </transition>
+          <ul class="list-group" id="infinite-list">
+            <li class="list-group-item" v-for="g in filterGames">{{ g.game_rank }}: {{ g.game_name }} - {{ g.mechanic }}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2 cold-md-6 col-md-offset-3">
+            <h1>Game Search</h1>
+            <hr>
+            <input type="text" name="" value="" v-model="search">
+            <ul>
+              <li v-for="g in filterGames">{{ g.game_rank }}: {{ g.game_name }} - {{ g.mechanic }}</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
+-->
   </div>
-</div>
 </template>
 
 <script>
@@ -53,6 +76,26 @@ export default {
         game_archive.mechanic.toLowerCase().match(this.search.toLowerCase()) ||
         game_archive.designer.toLowerCase().match(this.search.toLowerCase())
       })
+    },
+    rows() {
+      return this.items.length
+    }
+  },
+  data() {
+    return {
+      perPage: 3,
+      currentPage: 1,
+      items: [
+        { id: 1, first_name: 'Fred', last_name: 'Flintstone' },
+        { id: 2, first_name: 'Wilma', last_name: 'Flintstone' },
+        { id: 3, first_name: 'Barney', last_name: 'Rubble' },
+        { id: 4, first_name: 'Betty', last_name: 'Rubble' },
+        { id: 5, first_name: 'Pebbles', last_name: 'Flintstone' },
+        { id: 6, first_name: 'Bamm Bamm', last_name: 'Rubble' },
+        { id: 7, first_name: 'The Great', last_name: 'Gazzoo' },
+        { id: 8, first_name: 'Mr', last_name: 'Slate' },
+        { id: 9, first_name: 'Pearl', last_name: 'Slaghoople' }
+      ]
     }
   }
 }

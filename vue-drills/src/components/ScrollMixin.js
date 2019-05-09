@@ -29,7 +29,7 @@ export const ScrollMixin = {
       this.loading = true;
       setTimeout(e => {
         for (var i = 0; i < 20; i++) {
-          this.items.push('Item ' + this.nextItem++ );
+          this.items.push('Item ' + this.nextItem++ + '');
         }
         this.loading = false;
       }, 200);
