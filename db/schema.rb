@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_083723) do
   create_table "game_archives", force: :cascade do |t|
     t.string "game_name"
     t.integer "game_rank"
+    t.string "bgg_link"
     t.integer "playing_time"
     t.string "category"
     t.string "mechanic"

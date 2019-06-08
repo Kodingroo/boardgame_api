@@ -38,7 +38,7 @@
 
       <div class="masonry">
         <div class="item card" v-for="g in filterGames">
-          <img :src="g.thumb_url" class="card-img center-content">
+          <img :src="g.thumb_url" class="card-img center-content" @click="openLink(g.bgg_link)">
           <p v-if="game_archive.game_name"><b>{{ g.game_name }}</b></p>
           <p v-if="game_archive.game_rank">Rank: {{ g.game_rank }}</p>
           <p v-if="game_archive.playing_time">{{ g.playing_time }} minutes</p>

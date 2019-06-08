@@ -25,13 +25,18 @@ def get_titles(pages_count)
       game = {}
 
       name_array = []
-      name_array << html_doc.search("#results_objectname#{_item} > a").inner_text
+      name_link = html_doc.search("#results_objectname#{_item} > a").inner_text
+      if name_link.nil?
+        name_array = "n/a"
+      else
+        name_array << name_link.delete_prefix('"').delete_suffix('"')
+      end
 
       game[:user_id] = 1
       game[:game_name] = name_array[0]
       game[:game_rank] = game_rank_counter
       game_rank_counter += 1
-      #
+      
       bgg_code = html_doc.search("#results_objectname#{_item} > a")[0]['href'].scan(/game.([0-9]*)/)
       bgg_id = bgg_code[0][0].to_i
       puts "Getting #{game[:game_name]} with id: #{bgg_id}"
@@ -43,40 +48,76 @@ def get_titles(pages_count)
       xml_data = open(api_url).read
       xml_doc = Nokogiri::HTML(xml_data)
 
+      game[:bgg_link] = "https://boardgamegeek.com/boardgame/#{bgg_id}"
+
       playingtime_array = []
       xml_doc.search('playingtime').each do |ele|
-        playingtime_array << ele.values.split(',')[0].last
+        playingtime_array << ele.values.split(',')[0].last.to_i
       end
 
       game[:playing_time] = playingtime_array[0]
 
-      boardgamecategory_array = []
+      bgcategory_array = []
       xml_doc.search('[type="boardgamecategory"]').each do |ele|
-        boardgamecategory_array << ele.values[2]
+        if ele.nil?
+          bgcategory_array << "n/a"
+        else  
+          bgcategory = {}
+          bgcategory[:id] = ele['id']
+          bgcategory[:name] = ele['value']
+          bgcategory_array << bgcategory[:name]
+        end
+        # bgcategory_array << ele.values[2]
       end
 
-      game[:category] = boardgamecategory_array.first
+      game[:category] = bgcategory_array
 
-      boardgamemechanic_array = []
+      bgmechanic_array = []
       xml_doc.search('[type="boardgamemechanic"]').each do |ele|
-        boardgamemechanic_array << ele.values[2]
+        if ele.nil?
+          bgmechanic_array << "n/a"
+        else  
+          bgmechanic = {}
+          bgmechanic[:id] = ele['id']
+          bgmechanic[:name] = ele['value']
+          bgmechanic_array << bgmechanic[:name]
+        end
+        # bgmechanic_array << ele.values[2]
       end
 
-      game[:mechanic] = boardgamemechanic_array.first
+      game[:mechanic] = bgmechanic_array
 
-      boardgamedesigner_array = []
+      bgdesigner_array = []
       xml_doc.search('[type="boardgamedesigner"]').each do |ele|
-        boardgamedesigner_array << ele.values[2]
+        if ele.nil?
+          bgdesigner_array << "n/a"
+        else  
+          bgdesigner = {}
+          bgdesigner[:id] = ele['id']
+          bgdesigner[:name] = ele['value']
+          bgdesigner_array << bgdesigner[:name]
+        end
+        # bgdesigner_array << ele.values[2]
       end
 
-      game[:designer] = boardgamedesigner_array.first
+      game[:designer] = bgdesigner_array
 
       xml_doc.search('image').each do |ele|
-        game[:image_url] = ele.text
+        if ele.nil?
+          game[:image_url] = "n/a"
+        else  
+          game[:image_url] = ele.text
+        end
+        # game[:image_url] = ele.text
       end
 
       thumb_image = xml_doc.search('thumbnail').each do |ele|
-        game[:thumb_url] = ele.text
+        if ele.nil?
+          game[:thumb_url] = "n/a"
+        else  
+          game[:thumb_url] = ele.text
+        end
+        # game[:thumb_url] = ele.text
       end
 
       unless game[:game_name].nil?
@@ -91,7 +132,7 @@ def get_titles(pages_count)
   end
 end
 
-ranked_titles << get_titles(1..3)
+ranked_titles << get_titles(1..5)
 
 puts "Finished seeding database..."
 puts ""
