@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         game_archive: {
           game_name: "",
           game_rank: "",
+          bgg_link: "",
           playing_time: "",
           category: "",
           mechanic: "",
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     methods: {
       fetchData() {
         var vm = this
-        axios.get('https://boardgameapi.herokuapp.com/api/v1/game_archives')
+        axios.get('/api/v1/game_archives')
         .then(function (response){
           vm.game_archives = response.data;
         })
@@ -49,7 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       filterDesigners: function(){
         this.game_archive.designer = !this.game_archive.designer;
-      }
+      },
+      openLink: function (site_link) {   
+        window.open(site_link, "_blank");    
+    }
     },
     computed: {
       filterGames: function() {

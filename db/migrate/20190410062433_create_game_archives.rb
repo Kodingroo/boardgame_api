@@ -3,6 +3,7 @@ class CreateGameArchives < ActiveRecord::Migration[5.2]
     create_table :game_archives do |t|
       t.string :game_name
       t.integer :game_rank
+      t.string :bgg_link
       t.integer :playing_time
       t.string :category
       t.string :mechanic
