@@ -70,7 +70,7 @@ def get_titles(pages_count)
         # bgcategory_array << ele.values[2]
       end
 
-      game[:category] = bgcategory_array
+      game[:category] = Hash[bgcategory_array.map.each_with_index { |item, index| [index + 1, item] } ]
 
       bgmechanic_array = []
       xml_doc.search('[type="boardgamemechanic"]').each do |ele|
@@ -85,7 +85,7 @@ def get_titles(pages_count)
         # bgmechanic_array << ele.values[2]
       end
 
-      game[:mechanic] = bgmechanic_array
+      game[:mechanic] = Hash[bgmechanic_array.map.with_index { |item, index| [index + 1, item] } ]
 
       bgdesigner_array = []
       xml_doc.search('[type="boardgamedesigner"]').each do |ele|
@@ -101,6 +101,7 @@ def get_titles(pages_count)
       end
 
       game[:designer] = bgdesigner_array
+      game[:designer] = Hash[bgdesigner_array.map.with_index { |item, index| [index + 1, item] } ]
 
       xml_doc.search('image').each do |ele|
         if ele.nil?

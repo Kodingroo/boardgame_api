@@ -37,14 +37,14 @@
       </div>
 
       <div class="masonry">
-        <div class="item card" v-for="g in filterGames">
-          <img :src="g.thumb_url" class="card-img center-content" @click="openLink(g.bgg_link)">
+        <div class="item card" v-for="g in filterGames" @click="openLink(g.bgg_link)">
+          <img :src="g.thumb_url" class="card-img center-content">
           <p v-if="game_archive.game_name"><b>{{ g.game_name }}</b></p>
           <p v-if="game_archive.game_rank">Rank: {{ g.game_rank }}</p>
           <p v-if="game_archive.playing_time">{{ g.playing_time }} minutes</p>
-          <p v-if="game_archive.category">Category: {{ g.category}}</p>
-          <p v-if="game_archive.mechanic">Mechanic: {{ g.mechanic}}</p>
-          <p v-if="game_archive.designer">Designer: {{ g.designer}}</p>
+          <p v-if="game_archive.category">Category: {{ g.category }}</p>
+          <p v-if="game_archive.mechanic">Mechanic: {{ g.mechanic }}</p>
+          <p v-if="game_archive.designer">Designer: {{ g.designer }}</p>
         </div>
       </div>
     </div>
