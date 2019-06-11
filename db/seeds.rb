@@ -8,6 +8,15 @@ GameItem.destroy_all if Rails.env.development?
 
 ranked_titles = []
 
+class Category
+  def initialize(name)
+     @category_name = name
+  end
+  def name
+    @category_name
+  end
+end
+
 def get_titles(pages_count)
   game_rank_counter = 1
   pages_count = pages_count.to_a
@@ -57,20 +66,27 @@ def get_titles(pages_count)
 
       game[:playing_time] = playingtime_array[0]
 
+      # trying to add a hash to a game object with a Hash object      
+      game[:category] = Hash.new{|hsh,key| hsh[key] = [] }
+      
       bgcategory_array = []
-      xml_doc.search('[type="boardgamecategory"]').each do |ele|
+      xml_doc.search('[type="boardgamecategory"]').each_with_index do |ele, i|
         if ele.nil?
           bgcategory_array << "n/a"
         else  
           bgcategory = {}
           bgcategory[:id] = ele['id']
           bgcategory[:name] = ele['value']
+          # trying to add a hash to a game object with a Hash object
+          game[:category]['k1'].push(ele['value'])
+          # trying to add a hash to the game object with a class
+          # game[:category] = Category.new(ele['value']).name
           bgcategory_array << bgcategory[:name]
         end
         # bgcategory_array << ele.values[2]
       end
-
-      game[:category] = Hash[bgcategory_array.map.each_with_index { |item, index| [index + 1, item] } ]
+      
+      # game[:category] = new [bgcategory_array.map.each_with_index { |item, index| [index + 1, item] } ]
 
       bgmechanic_array = []
       xml_doc.search('[type="boardgamemechanic"]').each do |ele|
