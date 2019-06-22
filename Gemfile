@@ -10,6 +10,7 @@ gem 'rails', '5.2.2'
 gem 'redis'
 gem 'pundit'
 gem 'simple_token_authentication'
+gem 'active_model_serializers', '0.9.3'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'

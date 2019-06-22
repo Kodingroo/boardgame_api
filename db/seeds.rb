@@ -2,20 +2,12 @@ require 'nokogiri'
 require 'open-uri'
 
 GameArchive.destroy_all if Rails.env.development?
+GameCategory.destroy_all if Rails.env.development?
 GameItem.destroy_all if Rails.env.development?
 
 # GAMES DATABASE
 
 ranked_titles = []
-
-class Category
-  def initialize(name)
-     @category_name = name
-  end
-  def name
-    @category_name
-  end
-end
 
 def get_titles(pages_count)
   game_rank_counter = 1
@@ -67,41 +59,47 @@ def get_titles(pages_count)
       game[:playing_time] = playingtime_array[0]
 
       # trying to add a hash to a game object with a Hash object      
-      game[:category] = Hash.new{|hsh,key| hsh[key] = [] }
+      # game[:category] = Hash.new{|hsh,key| hsh[key] = [] }
       
-      bgcategory_array = []
-      xml_doc.search('[type="boardgamecategory"]').each_with_index do |ele, i|
-        if ele.nil?
-          bgcategory_array << "n/a"
-        else  
-          bgcategory = {}
-          bgcategory[:id] = ele['id']
-          bgcategory[:name] = ele['value']
-          # trying to add a hash to a game object with a Hash object
-          game[:category]['k1'].push(ele['value'])
-          # trying to add a hash to the game object with a class
-          # game[:category] = Category.new(ele['value']).name
-          bgcategory_array << bgcategory[:name]
-        end
-        # bgcategory_array << ele.values[2]
-      end
+      # bgcategory_array = []
+      # xml_doc.search('[type="boardgamecategory"]').each_with_index do |ele, i|
+      #     category_name = {}
+      #     category_name[:category_name] = ele['value']  
+      #     category_name[:game_archive_id] = game[:game_rank]
+      #     GameCategory.create!(category_name)
+
+      #   # if ele.nil?
+      #   #   bgcategory_array << "n/a"
+      #   # else  
+      #   #   category_name = {}
+      #   #   bgcategory[:id] = ele['id']
+      #   #   bgcategory[:name] = ele['value']
+      #   #   # trying to add a hash to a game object with a Hash object
+      #   #   game[:category]['k1'].push(ele['value'])
+      #   #   # trying to add a hash to the game object with a class
+      #   #   # game[:category] = Category.new(ele['value']).name
+      #   #   bgcategory_array << bgcategory[:name]
+      #   # end
+      #   # # bgcategory_array << ele.values[2]
+      # end
       
       # game[:category] = new [bgcategory_array.map.each_with_index { |item, index| [index + 1, item] } ]
 
-      bgmechanic_array = []
-      xml_doc.search('[type="boardgamemechanic"]').each do |ele|
-        if ele.nil?
-          bgmechanic_array << "n/a"
-        else  
-          bgmechanic = {}
-          bgmechanic[:id] = ele['id']
-          bgmechanic[:name] = ele['value']
-          bgmechanic_array << bgmechanic[:name]
-        end
-        # bgmechanic_array << ele.values[2]
-      end
 
-      game[:mechanic] = Hash[bgmechanic_array.map.with_index { |item, index| [index + 1, item] } ]
+      # bgmechanic_array = []
+      # xml_doc.search('[type="boardgamemechanic"]').each do |ele|
+      #   if ele.nil?
+      #     bgmechanic_array << "n/a"
+      #   else  
+      #     bgmechanic = {}
+      #     bgmechanic[:id] = ele['id']
+      #     bgmechanic[:name] = ele['value']
+      #     bgmechanic_array << bgmechanic[:name]
+      #   end
+      #   # bgmechanic_array << ele.values[2]
+      # end
+
+      # game[:mechanic] = Hash[bgmechanic_array.map.with_index { |item, index| [index + 1, item] } ]
 
       bgdesigner_array = []
       xml_doc.search('[type="boardgamedesigner"]').each do |ele|
@@ -139,8 +137,27 @@ def get_titles(pages_count)
 
       unless game[:game_name].nil?
         p game
-        GameArchive.create!(game)
+        game_data = GameArchive.create!(game)
+
+        xml_doc.search('[type="boardgamecategory"]').each_with_index do |ele, i|
+          category_name = {}
+          category_name[:game_archive_id] = game_data[:id]
+          category_name[:category_name] = ele['value']  
+          GameCategory.create!(category_name)
+        end
+
+        xml_doc.search('[type="boardgamemechanic"]').each do |ele|
+          bgmechanic = {}
+          bgmechanic[:game_archive_id] = game_data[:id]
+          bgmechanic[:mechanic_name] = ele['value']
+          GameMechanic.create!(bgmechanic)
+        end
       end
+
+      # unless game[:game_name].nil?
+      #   p game
+      #   GameArchive.create!(game)
+      # end
 
       sleep(5)
       puts "====================================================================="

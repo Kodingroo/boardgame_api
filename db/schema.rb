@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_10_083723) do
+ActiveRecord::Schema.define(version: 2019_06_22_210932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,6 @@ ActiveRecord::Schema.define(version: 2019_04_10_083723) do
     t.integer "game_rank"
     t.string "bgg_link"
     t.integer "playing_time"
-    t.string "category"
-    t.string "mechanic"
     t.string "designer"
     t.string "image_url"
     t.string "thumb_url"
@@ -29,6 +27,12 @@ ActiveRecord::Schema.define(version: 2019_04_10_083723) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_game_archives_on_user_id"
+  end
+
+  create_table "game_categories", force: :cascade do |t|
+    t.string "category_name"
+    t.bigint "game_archive_id"
+    t.index ["game_archive_id"], name: "index_game_categories_on_game_archive_id"
   end
 
   create_table "game_items", force: :cascade do |t|
@@ -39,6 +43,12 @@ ActiveRecord::Schema.define(version: 2019_04_10_083723) do
     t.datetime "updated_at", null: false
     t.index ["game_archive_id"], name: "index_game_items_on_game_archive_id"
     t.index ["user_id"], name: "index_game_items_on_user_id"
+  end
+
+  create_table "game_mechanics", force: :cascade do |t|
+    t.string "mechanic_name"
+    t.bigint "game_archive_id"
+    t.index ["game_archive_id"], name: "index_game_mechanics_on_game_archive_id"
   end
 
   create_table "users", force: :cascade do |t|

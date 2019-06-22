@@ -42,8 +42,12 @@
           <p v-if="game_archive.game_name"><b>{{ g.game_name }}</b></p>
           <p v-if="game_archive.game_rank">Rank: {{ g.game_rank }}</p>
           <p v-if="game_archive.playing_time">{{ g.playing_time }} minutes</p>
-          <p v-if="game_archive.category">Category: {{ g.category }}</p>
-          <p v-if="game_archive.mechanic">Mechanic: {{ g.mechanic }}</p>
+          <div v-for="cat in g.game_categories">
+            <p v-if="cat.category_name">{{ cat.category_name }}</p>
+          </div>
+          <div v-for="mech in g.game_mechanics">
+            <p v-if="mech.mechanic_name">{{ mech.mechanic_name }}</p>
+          </div>
           <p v-if="game_archive.designer">Designer: {{ g.designer }}</p>
         </div>
       </div>
