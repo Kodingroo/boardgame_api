@@ -13,7 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
           category: "",
           mechanic: "",
           designer: "",
-          isVisible: false
+          isVisible: false,
+          checked_true: true,
+          checked_false: false
         },
         game_archives: [],
         search: ""
@@ -32,6 +34,27 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(function (error){
           vm.game_archives = 'An error occured.' + error;
         });
+      },
+      filterAllOn: function(){
+        this.archive_filter.isVisible = true 
+        this.archive_filter.game_rank = true 
+      //   if(this.archive_filter.game_rank === false ){
+      //     this.filterRanks()
+      //  }
+        this.archive_filter.game_name = true 
+        this.archive_filter.playing_time = true 
+        this.archive_filter.category = true 
+        this.archive_filter.mechanic = true 
+        this.archive_filter.designer = true 
+      },
+      filterAllOff: function(){
+        this.archive_filter.isVisible = false 
+        this.archive_filter.game_rank = false 
+        this.archive_filter.game_name = false 
+        this.archive_filter.playing_time = false 
+        this.archive_filter.category = false 
+        this.archive_filter.mechanic = false 
+        this.archive_filter.designer = false 
       },
       filterRanks: function(){
         this.archive_filter.game_rank = !this.archive_filter.game_rank;
@@ -60,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return this.game_archives.filter((game_archive) => {
           return game_archive.game_name.toLowerCase().match(this.search.toLowerCase()) 
           // ||
-          //        game_archive.categories.category_name.toLowerCase().match(this.search.toLowerCase()) ||
+          //        game_archive.game_categories.category_name.toLowerCase().match(this.search.toLowerCase()) ||
           //        game_archive.mechanic.toLowerCase().match(this.search.toLowerCase()) ||
           //        game_archive.designer.toLowerCase().match(this.search.toLowerCase())
         })
