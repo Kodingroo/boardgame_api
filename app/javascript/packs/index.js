@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     el: '#my-target-element',
     data() {
       return {
-        game_archive: {
+        archive_filter: {
           game_name: "",
           game_rank: "",
           bgg_link: "",
@@ -34,22 +34,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       },
       filterRanks: function(){
-        this.game_archive.game_rank = !this.game_archive.game_rank;
+        this.archive_filter.game_rank = !this.archive_filter.game_rank;
       },
       filterNames: function(){
-        this.game_archive.game_name = !this.game_archive.game_name;
+        this.archive_filter.game_name = !this.archive_filter.game_name;
       },
       filterTimes: function(){
-        this.game_archive.playing_time = !this.game_archive.playing_time;
+        this.archive_filter.playing_time = !this.archive_filter.playing_time;
       },
       filterCategories: function(){
-        this.game_archive.category = !this.game_archive.category;
+        this.archive_filter.category = !this.archive_filter.category;
       },
       filterMechanics: function(){
-        this.game_archive.mechanic = !this.game_archive.mechanic;
+        this.archive_filter.mechanic = !this.archive_filter.mechanic;
       },
       filterDesigners: function(){
-        this.game_archive.designer = !this.game_archive.designer;
+        this.archive_filter.designer = !this.archive_filter.designer;
       },
       openLink: function (site_link) {   
         window.open(site_link, "_blank");    
@@ -58,10 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
     computed: {
       filterGames: function() {
         return this.game_archives.filter((game_archive) => {
-          return game_archive.game_name.toLowerCase().match(this.search.toLowerCase()) ||
-                 game_archive.category.toLowerCase().match(this.search.toLowerCase()) ||
-                 game_archive.mechanic.toLowerCase().match(this.search.toLowerCase()) ||
-                 game_archive.designer.toLowerCase().match(this.search.toLowerCase())
+          return game_archive.game_name.toLowerCase().match(this.search.toLowerCase()) 
+          // ||
+          //        game_archive.categories.category_name.toLowerCase().match(this.search.toLowerCase()) ||
+          //        game_archive.mechanic.toLowerCase().match(this.search.toLowerCase()) ||
+          //        game_archive.designer.toLowerCase().match(this.search.toLowerCase())
         })
       }
     }

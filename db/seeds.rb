@@ -101,21 +101,21 @@ def get_titles(pages_count)
 
       # game[:mechanic] = Hash[bgmechanic_array.map.with_index { |item, index| [index + 1, item] } ]
 
-      bgdesigner_array = []
-      xml_doc.search('[type="boardgamedesigner"]').each do |ele|
-        if ele.nil?
-          bgdesigner_array << "n/a"
-        else  
-          bgdesigner = {}
-          bgdesigner[:id] = ele['id']
-          bgdesigner[:name] = ele['value']
-          bgdesigner_array << bgdesigner[:name]
-        end
-        # bgdesigner_array << ele.values[2]
-      end
+      # bgdesigner_array = []
+      # xml_doc.search('[type="boardgamedesigner"]').each do |ele|
+      #   if ele.nil?
+      #     bgdesigner_array << "n/a"
+      #   else  
+      #     bgdesigner = {}
+      #     bgdesigner[:id] = ele['id']
+      #     bgdesigner[:name] = ele['value']
+      #     bgdesigner_array << bgdesigner[:name]
+      #   end
+      #   # bgdesigner_array << ele.values[2]
+      # end
 
-      game[:designer] = bgdesigner_array
-      game[:designer] = Hash[bgdesigner_array.map.with_index { |item, index| [index + 1, item] } ]
+      # game[:designer] = bgdesigner_array
+      # game[:designer] = Hash[bgdesigner_array.map.with_index { |item, index| [index + 1, item] } ]
 
       xml_doc.search('image').each do |ele|
         if ele.nil?
@@ -136,14 +136,13 @@ def get_titles(pages_count)
       end
 
       unless game[:game_name].nil?
-        p game
         game_data = GameArchive.create!(game)
 
         xml_doc.search('[type="boardgamecategory"]').each_with_index do |ele, i|
-          category_name = {}
-          category_name[:game_archive_id] = game_data[:id]
-          category_name[:category_name] = ele['value']  
-          GameCategory.create!(category_name)
+          bgcategory = {}
+          bgcategory[:game_archive_id] = game_data[:id]
+          bgcategory[:category_name] = ele['value']  
+          GameCategory.create!(bgcategory)
         end
 
         xml_doc.search('[type="boardgamemechanic"]').each do |ele|
@@ -152,12 +151,32 @@ def get_titles(pages_count)
           bgmechanic[:mechanic_name] = ele['value']
           GameMechanic.create!(bgmechanic)
         end
-      end
 
-      # unless game[:game_name].nil?
-      #   p game
-      #   GameArchive.create!(game)
-      # end
+        bgdesigner_array = []
+        xml_doc.search('[type="boardgamedesigner"]').each do |ele|
+            bgdesigner = {}
+            bgdesigner[:game_archive_id] = game_data[:id]
+            bgdesigner[:designer_name] = ele['value']
+            bgdesigner_array << bgdesigner[:name]
+            GameDesigner.create!(bgdesigner)
+        end
+
+        p game_data
+        print "Category: "
+        game_data.game_categories.each do |cat|
+          print cat.category_name + " "
+        end
+        p ""
+        print "Mechanic: "
+        game_data.game_mechanics.each do |mech|
+          print mech.mechanic_name + " "
+        end
+        p ""
+        print "Designer: "
+        game_data.game_designers.each do |des|
+          print des.designer_name + " "
+        end
+      end
 
       sleep(5)
       puts "====================================================================="

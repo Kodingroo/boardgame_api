@@ -8,6 +8,17 @@
   <div class="container">
     <div class="margin-top-bottom">
       <h1>Top 100 Board Games of 2019!!</h1>
+    
+<!--          <div v-for="g in game_archives">
+          <p>~</p>
+            <div v-for="cat in g.game_categories">
+              <p>{{ cat.category_name }}</p>
+            </div>
+          </div>
+          
+      <p>{{game_archive}}</p>
+-->      
+
       <input type="text" v-model="search" placeholder="search games" class="search-bar">
       <div class=checkboxes>
         <div>
@@ -39,16 +50,18 @@
       <div class="masonry">
         <div class="item card" v-for="g in filterGames" @click="openLink(g.bgg_link)">
           <img :src="g.thumb_url" class="card-img center-content">
-          <p v-if="game_archive.game_name"><b>{{ g.game_name }}</b></p>
-          <p v-if="game_archive.game_rank">Rank: {{ g.game_rank }}</p>
-          <p v-if="game_archive.playing_time">{{ g.playing_time }} minutes</p>
+          <p v-if="archive_filter.game_name"><b>{{ g.game_name }}</b></p>
+          <p v-if="archive_filter.game_rank">Rank: {{ g.game_rank }}</p>
+          <p v-if="archive_filter.playing_time">{{ g.playing_time }} minutes</p>
           <div v-for="cat in g.game_categories">
-            <p v-if="cat.category_name">{{ cat.category_name }}</p>
+            <p v-if="archive_filter.category">{{ cat.category_name }}</p>
           </div>
           <div v-for="mech in g.game_mechanics">
-            <p v-if="mech.mechanic_name">{{ mech.mechanic_name }}</p>
+            <p v-if="archive_filter.mechanic">{{ mech.mechanic_name }}</p>
           </div>
-          <p v-if="game_archive.designer">Designer: {{ g.designer }}</p>
+          <div v-for="des in g.game_designers">
+            <p v-if="archive_filter.designer">{{ des.designer_name }}</p>
+          </div>
         </div>
       </div>
     </div>

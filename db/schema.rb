@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_22_210932) do
+ActiveRecord::Schema.define(version: 2019_06_23_090912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2019_06_22_210932) do
     t.integer "game_rank"
     t.string "bgg_link"
     t.integer "playing_time"
-    t.string "designer"
     t.string "image_url"
     t.string "thumb_url"
     t.bigint "user_id"
@@ -33,6 +32,12 @@ ActiveRecord::Schema.define(version: 2019_06_22_210932) do
     t.string "category_name"
     t.bigint "game_archive_id"
     t.index ["game_archive_id"], name: "index_game_categories_on_game_archive_id"
+  end
+
+  create_table "game_designers", force: :cascade do |t|
+    t.string "designer_name"
+    t.bigint "game_archive_id"
+    t.index ["game_archive_id"], name: "index_game_designers_on_game_archive_id"
   end
 
   create_table "game_items", force: :cascade do |t|
