@@ -54,13 +54,12 @@
           <input type="checkbox" name="check_all_off" v-if="archive_filter.isVisible === true" @click="filterAllOff">
         </div>
       </div>
-
+<!--
       <label>Category</label>
         <select v-model="selected_category">
           <option v-for="category in game_categories">{{category}}</option>
         </select>
-
-
+-->
       <div class="masonry">
         <div class="item card" v-for="g in filterGames" @click="openLink(g.bgg_link)">
           <img :src="g.thumb_url" class="card-img center-content">
