@@ -6,17 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     data() {
       return {
         archive_filter: {
-          game_name: "",
-          game_rank: "",
-          bgg_link: "",
-          playing_time: "",
-          category: "",
-          mechanic: "",
-          designer: "",
+          game_name: false,
+          game_rank: false,
+          playing_time: false,
+          category: false,
+          mechanic: false,
+          designer: false,
           isVisible: false,
           checked_true: true,
           checked_false: false
         },
+        selected_category: "",
+        game_categories: ["Medical", "Adventure"],
         game_archives: [],
         search: ""
       }
@@ -36,16 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       },
       filterAllOn: function(){
-        this.archive_filter.isVisible = true 
-        this.archive_filter.game_rank = true 
-      //   if(this.archive_filter.game_rank === false ){
-      //     this.filterRanks()
-      //  }
-        this.archive_filter.game_name = true 
-        this.archive_filter.playing_time = true 
-        this.archive_filter.category = true 
-        this.archive_filter.mechanic = true 
-        this.archive_filter.designer = true 
+        this.archive_filter.isVisible = !this.archive_filter.isVisible
+        if (this.archive_filter.game_rank === false) { this.archive_filter.game_rank = !this.archive_filter.game_rank }
+        if (this.archive_filter.game_name === false) { this.archive_filter.game_name = !this.archive_filter.game_name }
+        if (this.archive_filter.playing_time === false) { this.archive_filter.playing_time = !this.archive_filter.playing_time }
+        if (this.archive_filter.category === false) { this.archive_filter.category = !this.archive_filter.category }
+        if (this.archive_filter.mechanic === false) { this.archive_filter.mechanic = !this.archive_filter.mechanic }
+        if (this.archive_filter.designer === false) { this.archive_filter.designer = !this.archive_filter.designer }
       },
       filterAllOff: function(){
         this.archive_filter.isVisible = false 

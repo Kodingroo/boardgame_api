@@ -12,6 +12,10 @@ gem 'pundit'
 gem 'simple_token_authentication'
 gem 'active_model_serializers', '0.9.3'
 
+gem 'fast_jsonapi'
+gem 'dry-types', '~> 0.12.0'
+gem 'dry-initializer', '~> 3.0', '>= 3.0.1'
+
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'sassc-rails'

@@ -27,33 +27,39 @@
         </div>
         <div>
           <label>Game Names </label>
-          <input type="checkbox" name="game_name" @click="filterNames">
+          <input type="checkbox" name="game_name" v-model="archive_filter.game_name" @click="filterNames">
         </div>
         <div>
           <label>Game Ranks </label>
-          <input type="checkbox" name="game_rank" @click="filterRanks">
+          <input type="checkbox" name="game_rank" v-model="archive_filter.game_rank" @click="filterRanks">
         </div>
         <div>
           <label>Playing Times </label>
-          <input type="checkbox" name="playing_time" @click="filterTimes">
+          <input type="checkbox" name="playing_time" v-model="archive_filter.playing_time" @click="filterTimes">
         </div>
         <div>
           <label>Categories </label>
-          <input type="checkbox" name="category" @click="filterCategories">
+          <input type="checkbox" name="category" v-model="archive_filter.category" @click="filterCategories">
         </div>
         <div>
           <label>Mechanics </label>
-          <input type="checkbox" name="mechanic" @click="filterMechanics">
+          <input type="checkbox" name="mechanic" v-model="archive_filter.mechanic" @click="filterMechanics">
         </div>
         <div>
           <label>Designers </label>
-          <input type="checkbox" name="designer" @click="filterDesigners">
+          <input type="checkbox" name="designer" v-model="archive_filter.designer" @click="filterDesigners">
         </div>
         <div>
           <label v-if="archive_filter.isVisible  === true">Hide All</label>
           <input type="checkbox" name="check_all_off" v-if="archive_filter.isVisible === true" @click="filterAllOff">
         </div>
       </div>
+
+      <label>Category</label>
+        <select v-model="selected_category">
+          <option v-for="category in game_categories">{{category}}</option>
+        </select>
+
 
       <div class="masonry">
         <div class="item card" v-for="g in filterGames" @click="openLink(g.bgg_link)">
@@ -67,6 +73,7 @@
           </div>
           <p class="font-weight-bold text-light bg-dark" v-if="archive_filter.mechanic">Mechanic:</p>
           <div v-for="mech in g.game_mechanics">
+          
             <p v-if="archive_filter.mechanic">{{ mech.mechanic_name }}</p>
           </div>
           <p class="font-weight-bold text-light bg-dark" v-if="archive_filter.designer">Designer:</p>          
