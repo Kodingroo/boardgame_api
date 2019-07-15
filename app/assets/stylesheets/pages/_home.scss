@@ -48,8 +48,12 @@ h1 {
   justify-content: center;
   width: 100%; /*Optional*/
   padding: 20px;
-  div {
+  & div {
     justify-content: space-between;
     padding-right: 20px;
+    flex-wrap: wrap;
+  }
+  @media only screen and (max-width: 600px) {
+    flex-wrap: wrap;
   }
 }
