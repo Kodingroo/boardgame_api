@@ -3,4 +3,6 @@ class GameItem < ApplicationRecord
   belongs_to :user
 
   p "tesitng"
+
+  p "Im doing more testing"
 end
