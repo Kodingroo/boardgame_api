@@ -123,7 +123,6 @@ def get_titles(pages_count)
         else  
           game[:image_url] = ele.text
         end
-        # game[:image_url] = ele.text
       end
 
       thumb_image = xml_doc.search('thumbnail').each do |ele|
@@ -132,7 +131,6 @@ def get_titles(pages_count)
         else  
           game[:thumb_url] = ele.text
         end
-        # game[:thumb_url] = ele.text
       end
 
       unless game[:game_name].nil?
